@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 class Student {
 
     private String name;
@@ -13,8 +15,8 @@ class Student {
     }
 
     private Integer createStudentNumber() {
-        studentNumber = studentNumber;
-        return studentNumber++;
+        Integer newStudentNumber = this.studentNumber++;
+        return newStudentNumber;
     }
 
     public String getName() {

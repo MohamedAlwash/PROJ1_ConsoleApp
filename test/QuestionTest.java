@@ -1,7 +1,7 @@
 package test;
 
-import org.junit.Assert;
 import org.junit.Test;
+
 import src.Question;
 
 public class QuestionTest {
@@ -63,7 +63,4 @@ public class QuestionTest {
 //        Assert.assertEquals(expectedMessage, a.getNumberAnswer());
 //
 //    }
-
-
-
 }
