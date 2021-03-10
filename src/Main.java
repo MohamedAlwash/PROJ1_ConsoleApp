@@ -6,23 +6,27 @@ class Main
 {
 	public static void main(String[] args){
 
-        Student.ALL_STUDENTS.add(new Student("Ashwin"));
-        Student.ALL_STUDENTS.add(new Student("Mohamed"));
-        Student.ALL_STUDENTS.add(new Student("Richall"));
-    System.out.println("Hallo World!");
-    int selectie = Menu();
-    int teller = 0;
+        Student student1 = new Student("Richall");
+        Student student2 = new Student("Mohammed");
 
+
+//        Student.ALL_STUDENTS.add(new Student("Ashwin"));
+//        Student.ALL_STUDENTS.add(new Student("Mohamed"));
+//        Student.ALL_STUDENTS.add(new Student("Richall"));
+
+    int selectie = Menu();
+
+// switch case voor menu opties
     switch (selectie){
         case 1:
             System.out.println("keuze 1");
             break;
         case 2:
-            for(Student s: Student.ALL_STUDENTS){
-                System.out.println(s.getName() + s.getStudentNumber());
-
-
-            }
+            //print naam en de unieke hashcode van het object
+            System.out.println(student1.getName()
+                    + " " + student1.hashCode());
+            System.out.println(student2.getName()
+                    + " " + student2.hashCode());
             break;
         case 3:
             System.out.println("keuze 3");
