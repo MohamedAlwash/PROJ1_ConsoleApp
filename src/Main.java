@@ -4,14 +4,24 @@ import java.util.Scanner;
 class Main
 {
 	public static void main(String[] args){
+
+        Student.ALL_STUDENTS.add(new Student("Ashwin"));
+        Student.ALL_STUDENTS.add(new Student("Mohamed"));
+        Student.ALL_STUDENTS.add(new Student("Richall"));
     System.out.println("Hallo World!");
     int selectie = Menu();
+    int teller = 0;
+
     switch (selectie){
         case 1:
             System.out.println("keuze 1");
             break;
         case 2:
-            System.out.println("keuze 2");
+            for(Student s: Student.ALL_STUDENTS){
+                System.out.println(s.getName() + s.getStudentNumber());
+
+
+            }
             break;
         case 3:
             System.out.println("keuze 3");
@@ -46,6 +56,8 @@ class Main
         for(String opties :menuOpties){
             System.out.println(opties);
         }
+
+
 
         System.out.println("Maak een keuze");
         selectie = scanner.nextInt();
