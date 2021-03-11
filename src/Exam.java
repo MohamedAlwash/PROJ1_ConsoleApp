@@ -14,6 +14,7 @@ public class Exam {
 
         mathQuestions.add(new Question("1 + 1 = ", "5" ));
         mathQuestions.add(new Question("9 + 10 =", "21" ));
+        mathQuestions.add(new Question("6 + 132 =", "23" ));
 
 
 
