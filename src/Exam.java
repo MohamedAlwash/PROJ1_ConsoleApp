@@ -2,10 +2,33 @@ package src;
 
 import java.util.ArrayList;
 
+class ExamResults{
+
+    private String examType;
+    private Boolean result;
+
+    public String getExamType() {
+        return examType;
+    }
+
+    public void setExamType(String examType) {
+        this.examType = examType;
+    }
+
+    public Boolean getResult() {
+        return result;
+    }
+
+    public void setResult(Boolean result) {
+        this.result = result;
+    }
+}
+
+
 public class Exam {
 
     //private String typeExam;
-    private ArrayList<Boolean> results = new ArrayList<Boolean>();
+    private ArrayList<ExamResults> results = new ArrayList<ExamResults>();
 
 
     //Exam math
@@ -27,12 +50,12 @@ public class Exam {
 
 
 
-    public ArrayList<Question> getExam (Integer examType){
+    public ArrayList<Question> getExam (String examType){
 
         switch (examType){
-            case 0:
+            case "math":
                 return getMathQuestions();
-            case 1:
+            case "dutch":
                 //HOI
                 break;
         }

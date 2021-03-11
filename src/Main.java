@@ -62,8 +62,6 @@ class Main
             System.out.println(opties);
         }
 
-
-
         System.out.println("Maak een keuze");
         selectie = scanner.nextInt();
         return selectie;
