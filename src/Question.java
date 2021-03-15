@@ -23,7 +23,7 @@ public class Question {
         this.question = question;
     }
 
-    public void setAnswer(String Answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 
