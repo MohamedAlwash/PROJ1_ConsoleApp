@@ -2,39 +2,22 @@ package src;
 
 import java.util.ArrayList;
 
-class ExamResults{
-
-    private String examType;
-    private Boolean result;
-
-    public String getExamType() {
-        return examType;
-    }
-
-    public void setExamType(String examType) {
-        this.examType = examType;
-    }
-
-    public Boolean getResult() {
-        return result;
-    }
-
-    public void setResult(Boolean result) {
-        this.result = result;
-    }
-}
-
 class Student {
-
-    private String name;
-    private static Integer studentNumber = 10000000;
-//  private ArrayList<Exam> makes = new ArrayList<Exam>();
+    //Static variables
     public static final ArrayList<Student> ALL_STUDENTS = new ArrayList<>();
-    private ArrayList<ExamResults> results = new ArrayList<ExamResults>();
+    private static Integer studentNumber = 10000000;
 
+    //private variables
+    private String studentName;
+    private ArrayList<ExamResult> examResults = new ArrayList<ExamResult>();
 
-    public Student(String name) {
-        this.name = name;
+    public ArrayList<Question> GetNewExam(ExamTypes examTypes){
+        examResults.add(new ExamResult(examTypes)); //Adds new ExamResult & set the type of exam the student is about to make
+        return examResults.get(examResults.size()).getExam().getExamQuestions(examTypes); //Gets all the questions of the type exam the student is about to make
+    }
+
+    public Student(String studentName) {
+        this.studentName = studentName;
         ALL_STUDENTS.add(this);
     }
 
@@ -44,7 +27,7 @@ class Student {
     }
 
     public String getName() {
-        return this.name;
+        return this.studentName;
     }
 
     public Integer getStudentNumber() {
