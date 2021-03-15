@@ -19,6 +19,14 @@ public class Question {
         return answer;
     }
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setAnswer(String Answer) {
+        this.answer = answer;
+    }
+
 //    public Boolean getCorrect() {
 //        return Correct;
 //    }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 class Student {
 
     private String name;
-    private Integer studentNumber = 10000000;
+    private static Integer studentNumber = 10000000;
 //    private ArrayList<Exam> makes = new ArrayList<Exam>();
     public static final ArrayList<Student> ALL_STUDENTS = new ArrayList<>();
 

@@ -27,7 +27,6 @@ class ExamResults{
 
 public class Exam {
 
-    //private String typeExam;
     private ArrayList<ExamResults> results = new ArrayList<ExamResults>();
 
 
@@ -63,8 +62,5 @@ public class Exam {
         return null;
     }
 
-    //public String getTypeExam(){
-    //   return typeExam;
-    //}
 
 }
