@@ -2,33 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-class ExamResults{
-
-    private String examType;
-    private Boolean result;
-
-    public String getExamType() {
-        return examType;
-    }
-
-    public void setExamType(String examType) {
-        this.examType = examType;
-    }
-
-    public Boolean getResult() {
-        return result;
-    }
-
-    public void setResult(Boolean result) {
-        this.result = result;
-    }
-}
-
-
 public class Exam {
-
-    private ArrayList<ExamResults> results = new ArrayList<ExamResults>();
-
 
     //Exam math
     private ArrayList<Question> getMathQuestions(){
@@ -40,14 +14,8 @@ public class Exam {
         mathQuestions.add(new Question("6 + 132 =", "23" ));
 
 
-
-
         return mathQuestions;
     }
-
-
-
-
 
     public ArrayList<Question> getExam (String examType){
 
