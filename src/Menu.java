@@ -8,10 +8,10 @@ public class Menu {
     String result = "";
 
     public String menuInterface() {
-
+        Scanner scanner = new Scanner(System.in);
         Student student1 = new Student("Richall");
         Student student2 = new Student("Mohammed");
-
+        int terug;
 
 //        Student.ALL_STUDENTS.add(new Student("Ashwin"));
 //        Student.ALL_STUDENTS.add(new Student("Mohamed"));
@@ -38,7 +38,10 @@ public class Menu {
                 return sb.toString();
 
             case 3:
-                result ="keuze 3";
+                System.out.println("Vul uw naam in:");
+                String studentName = scanner.nextLine();
+                Student.ALL_STUDENTS.add(new Student(studentName));
+
                 break;
             case 4:
                 result ="keuze 4";

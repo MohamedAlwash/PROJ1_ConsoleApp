@@ -9,14 +9,17 @@ class Main
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Menu result = new Menu();
-
+        int exit = 0;
         Student.ALL_STUDENTS.add(new Student("Ashwin"));
 
-        result.menuInterface();
+            System.out.println(result.menuInterface());
+            System.out.println("typ 1 om terug te gaan:");
+            exit=sc.nextInt();
+            while(exit == 1 ){
+                System.out.println(result.menuInterface());
+                System.out.println("typ 1 om terug te gaan:");
+                exit=sc.nextInt();
+            }
 
-        Student.ALL_STUDENTS.add(new Student("Mohamed"));
-        Student.ALL_STUDENTS.add(new Student("Richall"));
-        Student.ALL_STUDENTS.add(new Student("Test object"));
-        System.out.println(result.menuInterface());
     }
 }
