@@ -10,7 +10,7 @@ class Main
         Scanner sc = new Scanner(System.in);
         Menu result = new Menu();
         result.menuInterface();
-        Student.ALL_STUDENTS.add(new Student("Ashwin"));
+        Student.ALL_STUDENTS.add(new Student("Mohamed1"));
         Student.ALL_STUDENTS.add(new Student("Mohamed"));
         Student.ALL_STUDENTS.add(new Student("Richall"));
         Student.ALL_STUDENTS.add(new Student("Test object"));
