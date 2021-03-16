@@ -11,6 +11,9 @@ class Main
         Menu result = new Menu();
 
         Student.ALL_STUDENTS.add(new Student("Ashwin"));
+
+        result.menuInterface();
+
         Student.ALL_STUDENTS.add(new Student("Mohamed"));
         Student.ALL_STUDENTS.add(new Student("Richall"));
         Student.ALL_STUDENTS.add(new Student("Test object"));
