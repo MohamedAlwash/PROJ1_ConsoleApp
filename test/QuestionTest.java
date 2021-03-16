@@ -1,12 +1,12 @@
 package test;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
+import org.junit.Test;
 import src.Question;
 
 public class QuestionTest {
 
+
+    private junit.framework.Assert Assert;
 
     @Test
     public void testGetAnswer() {
@@ -14,7 +14,6 @@ public class QuestionTest {
         String expectedMessage = "b";
 
         Assert.assertEquals(expectedMessage, a.getAnswer());
-
     }
 
     @Test
@@ -23,7 +22,6 @@ public class QuestionTest {
         String expectedMessage = "a";
 
         Assert.assertEquals(expectedMessage, a.getQuestion());
-
     }
 
     @Test
@@ -33,7 +31,6 @@ public class QuestionTest {
         String expectedMessage = "y" ;
 
         Assert.assertEquals(expectedMessage, a.getQuestion());
-
     }
 
     @Test
@@ -43,7 +40,6 @@ public class QuestionTest {
         String expectedMessage = "z" ;
 
         Assert.assertEquals(expectedMessage, a.getAnswer());
-
     }
 
 //    @Test

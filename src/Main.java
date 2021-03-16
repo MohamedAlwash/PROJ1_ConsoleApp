@@ -1,20 +1,20 @@
 package src;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 class Main
 {
 	public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
 
-        Student student1 = new Student("Richall");
-        Student student2 = new Student("Mohammed");
+        Student.ALL_STUDENTS.add(new Student("Ashwin"));
+        Student.ALL_STUDENTS.add(new Student("Mohamed"));
+        Student.ALL_STUDENTS.add(new Student("Richall"));
+        Student.ALL_STUDENTS.add(new Student("Test object"));
 
-
-//        Student.ALL_STUDENTS.add(new Student("Ashwin"));
-//        Student.ALL_STUDENTS.add(new Student("Mohamed"));
-//        Student.ALL_STUDENTS.add(new Student("Richall"));
-
-    int selectie = Menu();
+        int selectie = Menu();
 
 // switch case voor menu opties
     switch (selectie){
@@ -22,14 +22,20 @@ class Main
             System.out.println("keuze 1");
             break;
         case 2:
-            //print naam en de unieke hashcode van het object
-            System.out.println(student1.getName()
-                    + " " + student1.hashCode());
-            System.out.println(student2.getName()
-                    + " " + student2.hashCode());
+            ArrayList<Student> allStudents = Student.ALL_STUDENTS;
+
+            // print elk object uit de ALL_STUDENTS ArrayList met hashcode (studentnummer)
+            for(int i = 0; i < allStudents.size(); i++) {
+                System.out.println(allStudents.get(i).getName() + " " + allStudents.get(i).hashCode());
+            }
+
             break;
         case 3:
-            System.out.println("keuze 3");
+
+            System.out.println("Vul uw naam in:");
+            String studentName = sc.nextLine();
+            System.out.println(studentName);
+
             break;
         case 4:
             System.out.println("keuze 4");
