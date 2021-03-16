@@ -9,14 +9,6 @@ public class Menu {
 
     public String menuInterface() {
         Scanner scanner = new Scanner(System.in);
-        Student student1 = new Student("Richall");
-        Student student2 = new Student("Mohammed");
-        int terug;
-
-//        Student.ALL_STUDENTS.add(new Student("Ashwin"));
-//        Student.ALL_STUDENTS.add(new Student("Mohamed"));
-//        Student.ALL_STUDENTS.add(new Student("Richall"));
-
         int selectie = menuOpties();
 
 // switch case voor menu opties
@@ -44,16 +36,16 @@ public class Menu {
 
                 break;
             case 4:
-                result ="keuze 4";
+                result = "keuze 4";
                 break;
             case 5:
-                result ="keuze 5";
+                result = "keuze 5";
                 break;
             case 6:
-                result ="keuze 6";
+                result = "keuze 6";
                 break;
             case 7:
-                result ="keuze 7";
+                result = "keuze 7";
                 break;
 
         }
@@ -61,7 +53,7 @@ public class Menu {
     }
 
 
-    public static int menuOpties(){
+    public static int menuOpties() {
         int selectie;
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> menuOpties = new ArrayList<>();
@@ -72,7 +64,7 @@ public class Menu {
         menuOpties.add("5) Examen afnemen");
         menuOpties.add("6) Welke student heeft de meeste examens gehaald?");
 
-        for(String opties :menuOpties){
+        for (String opties : menuOpties) {
             System.out.println(opties);
         }
 

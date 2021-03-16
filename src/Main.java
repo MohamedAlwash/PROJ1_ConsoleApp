@@ -10,7 +10,6 @@ class Main
         Scanner sc = new Scanner(System.in);
         Menu result = new Menu();
         int exit = 0;
-        Student.ALL_STUDENTS.add(new Student("Ashwin"));
 
             System.out.println(result.menuInterface());
             System.out.println("typ 1 om terug te gaan:");
