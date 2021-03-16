@@ -28,12 +28,15 @@ public class Menu {
                 //print naam en de unieke hashcode van het object
                 ArrayList<Student> allStudents = Student.ALL_STUDENTS;
 
-                // print elk object uit de ALL_STUDENTS ArrayList met hashcode (studentnummer)
-                for(int i = 0; i < allStudents.size(); i++) {
-                     result = allStudents.get(i).getName() + " " + allStudents.get(i).hashCode();
-                }
+                StringBuilder sb = new StringBuilder();
 
-                break;
+                for (Student allStudent : allStudents) {
+                    sb.append(allStudent.getName() + " " + allStudent.hashCode());
+                    sb.append("\n");
+
+                }
+                return sb.toString();
+
             case 3:
                 result ="keuze 3";
                 break;
