@@ -11,6 +11,10 @@ class Main
         Menu result = new Menu();
         int exit = 0;
 
+        Student.ALL_STUDENTS.add(new Student("Ashwin"));
+        Student.ALL_STUDENTS.add(new Student("Mohamed"));
+        Student.ALL_STUDENTS.add(new Student("Richall"));
+
             System.out.println(result.menuInterface());
             System.out.println("typ 1 om terug te gaan:");
             exit=sc.nextInt();

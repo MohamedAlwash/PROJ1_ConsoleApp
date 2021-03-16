@@ -36,7 +36,24 @@ public class Menu {
 
                 break;
             case 4:
-                result = "keuze 4";
+
+                Scanner sc = new Scanner(System.in);
+
+                System.out.println("Welke student wilt u verwijderen?");
+
+                ArrayList<Student> studentList = Student.ALL_STUDENTS;
+                int i = 0;
+                for (Student allStudent : studentList) {
+                    i++;
+                    System.out.println((i + ". " + allStudent.getName() + " " + allStudent.hashCode()));
+                }
+                Integer input = sc.nextInt();
+
+                if(input == i) {
+                    studentList.remove(i);
+                }
+
+//                result = "keuze 4";
                 break;
             case 5:
                 result = "keuze 5";
