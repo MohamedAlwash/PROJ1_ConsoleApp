@@ -47,11 +47,9 @@ public class Menu {
                     i++;
                     System.out.println((i + ". " + allStudent.getName() + " " + allStudent.hashCode()));
                 }
-                Integer input = sc.nextInt();
-
-                if(input == i) {
-                    studentList.remove(i);
-                }
+                System.out.println("Kies index");
+                int input = sc.nextInt();
+                studentList.remove(input-1);
 
 //                result = "keuze 4";
                 break;
