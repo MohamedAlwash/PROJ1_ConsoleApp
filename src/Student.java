@@ -1,5 +1,8 @@
 package src;
 
+import src.Exams.EnglishExam;
+import src.Exams.MathExam;
+
 import java.util.ArrayList;
 
 class Student {
@@ -10,7 +13,7 @@ class Student {
 
     //private variables
     private String studentName;
-    private ArrayList<ExamResult> examResults = new ArrayList<ExamResult>();
+    private ArrayList<Exam> exams = new ArrayList<>();
 
 
     public Student(String studentName) {
@@ -18,10 +21,25 @@ class Student {
         // ALL_STUDENTS.add(this);
     }
 
-    public ArrayList<Question> GetNewExam(ExamTypes examTypes){
-        examResults.add(new ExamResult(examTypes)); //Adds new ExamResult & set the type of exam the student is about to make
-        return examResults.get(examResults.size()).getExam().getExamQuestions(examTypes); //Gets all the questions of the type exam the student is about to make
+    public ArrayList<Exam> getExams() {
+        return exams;
     }
+
+    public ArrayList<Question> ChooseExam(ExamTypes examType){
+        switch (examType){
+            case Math:
+                MathExam mathExam = new MathExam(studentName, studentNumber);
+                exams.add(mathExam);
+                return mathExam.GetExamQuestions();
+            case English:
+                EnglishExam englishExam = new EnglishExam(studentName, studentNumber);
+                exams.add(englishExam);
+                return englishExam.GetExamQuestions();
+        }
+
+        return null;
+    }
+
 
     private Integer createStudentNumber() {
         this.studentNumber = this.studentNumber;

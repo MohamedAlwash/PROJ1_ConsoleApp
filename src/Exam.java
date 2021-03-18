@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public class Exam {
+/*public class Exam {
 
 
     //Exam math
@@ -23,7 +23,7 @@ public class Exam {
         ArrayList<Question> englishQuestions = new ArrayList<Question>();
 
         //Questions English
-        englishQuestions.add(new Question("Is it Ananas or Annenenas?", "Pineapple" ));
+
 
 
         return englishQuestions;
@@ -37,11 +37,49 @@ public class Exam {
             case Math:
                 return getMathQuestions();
             case English:
-                return  getEnglishQuestions();
+                return getEnglishQuestions();
         }
 
         return null;
     }
 
 
+}*/
+
+public abstract class Exam{
+
+    protected String nameStudent;
+    protected Integer studentNumber;
+    protected Boolean result;
+    public ExamTypes examType;
+
+    public Integer getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(Integer studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public String getNameStudent() {
+        return nameStudent;
+    }
+
+    public void setNameStudent(String nameStudent) {
+        this.nameStudent = nameStudent;
+    }
+
+    public Boolean getResult() {
+        return result;
+    }
+
+    public void setResult(Boolean result) {
+        this.result = result;
+    }
+
+    public abstract ArrayList<Question> GetExamQuestions();
 }
+
+
+
+
