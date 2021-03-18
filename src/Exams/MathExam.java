@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class MathExam extends Exam {
 
     public MathExam(String name, Integer number) {
-        examType = ExamTypes.Math;
+        setExamType(ExamTypes.Math);
         setNameStudent(name);
         setStudentNumber(number);
     }

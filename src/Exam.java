@@ -48,18 +48,10 @@ import java.util.ArrayList;
 
 public abstract class Exam{
 
-    protected String nameStudent;
-    protected Integer studentNumber;
-    protected Boolean result;
-    public ExamTypes examType;
-
-    public Integer getStudentNumber() {
-        return studentNumber;
-    }
-
-    public void setStudentNumber(Integer studentNumber) {
-        this.studentNumber = studentNumber;
-    }
+    private String nameStudent;
+    private Integer studentNumber;
+    private Boolean result;
+    private ExamTypes examType;
 
     public String getNameStudent() {
         return nameStudent;
@@ -69,12 +61,28 @@ public abstract class Exam{
         this.nameStudent = nameStudent;
     }
 
+    public Integer getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(Integer studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
     public Boolean getResult() {
         return result;
     }
 
     public void setResult(Boolean result) {
         this.result = result;
+    }
+
+    public ExamTypes getExamType() {
+        return examType;
+    }
+
+    public void setExamType(ExamTypes examType) {
+        this.examType = examType;
     }
 
     public abstract ArrayList<Question> GetExamQuestions();
