@@ -8,7 +8,7 @@ class Main
 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Menu result = new Menu();
+        Menu result = new Menu(new StudentHandler());
         int exit = 0;
 
         Student.ALL_STUDENTS.add(new Student("Ashwin"));
