@@ -25,42 +25,36 @@ public class Menu {
             case 1:
                 result = "keuze 1";
                 break;
-            case 2:
+            case 2: // List of students
                 //print naam en de unieke hashcode van het object
-                ArrayList<Student> allStudents = Student.ALL_STUDENTS;
+
 
                 StringBuilder sb = new StringBuilder();
 
-                for (Student allStudent : allStudents) {
+                for (Student allStudent : studentHandler.getAllStudents()) {
                     sb.append(allStudent.getName() + " " + allStudent.hashCode());
                     sb.append("\n");
 
                 }
                 return sb.toString();
 
-            case 3:
+            case 3: // Create new Student
                 System.out.println("Vul uw naam in:");
-                String studentName = scanner.nextLine();
-                studentHandler.setUsingStudent(new Student(studentName));
-
-                Student.ALL_STUDENTS.add(studentHandler.getUsingStudent());
-
+                studentHandler.AddStudent(scanner.nextLine());
                 break;
-            case 4:
+            case 4: //remove student
 
                 Scanner sc = new Scanner(System.in);
 
                 System.out.println("Welke student wilt u verwijderen?");
 
-                ArrayList<Student> studentList = Student.ALL_STUDENTS;
                 int i = 0;
-                for (Student allStudent : studentList) {
+                for (Student allStudent : studentHandler.getAllStudents()) {
                     i++;
                     System.out.println((i + ". " + allStudent.getName() + " " + allStudent.hashCode()));
                 }
                 System.out.println("Kies index");
-                int input = sc.nextInt();
-                studentList.remove(input-1);
+                studentHandler.RemoveStudent(sc.nextInt());
 
 //                result = "keuze 4";
                 break;
@@ -72,11 +66,11 @@ public class Menu {
                 Integer keuze = scanner.nextInt();
 
                 if(keuze == 1) {
-                    //ArrayList<Question> questions = usingStudent.getExamResult().chooseExam(ExamTypes.Math);
+                    ArrayList<Question> questions = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.Math);
                     //System.out.println(questions);
                 }
                 else if(keuze == 2) {
-                    //ArrayList<Question> questions = usingStudent.getExamResult().chooseExam(ExamTypes.English);
+                    ArrayList<Question> questions = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.English);
                     //System.out.println(questions);
                 }
 

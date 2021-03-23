@@ -11,11 +11,13 @@ public class Question {
         //Correct = false;
     }
 
+
     public String getQuestion() {
         return question;
     }
 
     public String getAnswer() {
+
         return answer;
     }
 
