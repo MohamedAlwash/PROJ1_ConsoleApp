@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    String result = "";
+    public String result = "";
 
     public String menuInterface() {
         Scanner scanner = new Scanner(System.in);
