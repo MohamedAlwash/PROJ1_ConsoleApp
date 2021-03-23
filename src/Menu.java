@@ -64,26 +64,54 @@ public class Menu {
                 System.out.println("2. Engels examen");
 
                 Integer keuze = scanner.nextInt();
+                scanner.nextLine();
+
+                int countCorrect = 0;
+                boolean behaald = false;
 
                 if(keuze == 1) {
-                    ArrayList<Question> questions2 = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.Math);
-                    for(Question examQuestions : questions2) {
-                        System.out.println(examQuestions.getQuestion());
-                    }
-                }
-                else if(keuze == 2) {
-                    ArrayList<Question> questions2 = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.English);
-                    for(Question examQuestions : questions2) {
+                    ArrayList<Question> questions = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.Math);
+
+                    for(Question examQuestions : questions) {
                         System.out.println(examQuestions.getQuestion());
 
                         System.out.println("Geef antwoord:");
                         String gegevenAntwoord = scanner.nextLine();
 
-                        int countCorrect = 0;
-                        if(gegevenAntwoord.equals(examQuestions.getAnswer())) {
+                        // Checked of het gegeven antwoord gelijk is aan het antwoord, misschien onnodige code.
+                        if(gegevenAntwoord.equalsIgnoreCase(examQuestions.getAnswer())) {
                             countCorrect++;
                         }
                         System.out.println(countCorrect);
+                    }
+                    if(countCorrect >= questions.size() / 2) {
+                        behaald = true;
+                        System.out.println("Geslaagd!");
+                    } else {
+                        System.out.println("Helaas gezakt!");
+                    }
+                }
+                else if(keuze == 2) {
+                    ArrayList<Question> questions = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.English);
+
+                    for(Question examQuestions : questions) {
+                        System.out.println(examQuestions.getQuestion());
+
+                        System.out.println("Geef antwoord:");
+                        String gegevenAntwoord = scanner.nextLine();
+
+                        // Checked of het gegeven antwoord gelijk is aan het antwoord, misschien onnodige code.
+                        if(gegevenAntwoord.equalsIgnoreCase(examQuestions.getAnswer())) {
+                            countCorrect++;
+                        }
+                        System.out.println(countCorrect);
+                    }
+                    if(countCorrect >= questions.size() / 2) {
+                        behaald = true;
+                        System.out.println("Geslaagd!");
+                    } else {
+                        System.out.println("Helaas gezakt!");
+
                     }
                 }
                 // -> Menu with different exams (Math, English) with sout
@@ -92,7 +120,8 @@ public class Menu {
                 // -> Display these question one by one with forloop
                 // -> Check user input with the attached answer by the question
                 // -> when true add 1 to variable CountofCorrect
-                // -> After Exam check,if  CountofCorrect >= than Questions.size() / 2. if true set in exam the boolean result to true, if false set in exam the boolean to false.
+                // -> After Exam check,if  CountofCorrect >= than Questions.size() /
+                // 2. if true set in exam the boolean result to true, if false set in exam the boolean to false.
                 // -> return to main menu
 
                 break;
