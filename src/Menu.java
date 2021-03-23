@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Menu {
 
     public String result = "";
-
+    private Student usingStudent;
 
     private StudentHandler studentHandler;
 
@@ -66,15 +66,26 @@ public class Menu {
                 Integer keuze = scanner.nextInt();
 
                 if(keuze == 1) {
-                    ArrayList<Question> questions = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.Math);
-                    //System.out.println(questions);
+                    ArrayList<Question> questions2 = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.Math);
+                    for(Question examQuestions : questions2) {
+                        System.out.println(examQuestions.getQuestion());
+                    }
                 }
                 else if(keuze == 2) {
-                    ArrayList<Question> questions = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.English);
-                    //System.out.println(questions);
-                }
+                    ArrayList<Question> questions2 = studentHandler.getUsingStudent().getExamResult().chooseExam(ExamTypes.English);
+                    for(Question examQuestions : questions2) {
+                        System.out.println(examQuestions.getQuestion());
 
-                result = "keuze 5";
+                        System.out.println("Geef antwoord:");
+                        String gegevenAntwoord = scanner.nextLine();
+
+                        int countCorrect = 0;
+                        if(gegevenAntwoord.equals(examQuestions.getAnswer())) {
+                            countCorrect++;
+                        }
+                        System.out.println(countCorrect);
+                    }
+                }
                 // -> Menu with different exams (Math, English) with sout
                 // -> Choose an exam
                 // -> Get questions for the chosen exam

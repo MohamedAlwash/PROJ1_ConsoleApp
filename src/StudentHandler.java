@@ -12,7 +12,7 @@ public class StudentHandler {
     }
 
     public void setAllStudents(ArrayList<Student> allStudents) {
-       allStudents = allStudents;
+        allStudents = allStudents;
     }
 
     public Student getUsingStudent() {
