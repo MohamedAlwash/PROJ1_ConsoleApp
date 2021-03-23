@@ -8,10 +8,8 @@ import java.util.ArrayList;
 
 public class EnglishExam extends Exam {
 
-    public EnglishExam(String name, Integer number) {
+    public EnglishExam() {
         setExamType(ExamTypes.English);
-        setNameStudent(name);
-        setStudentNumber(number);
     }
 
     @Override

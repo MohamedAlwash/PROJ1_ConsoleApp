@@ -55,6 +55,15 @@ public class Menu {
                 break;
             case 5:
                 result = "keuze 5";
+                // -> Menu with different exams (Math, English) with sout
+                // -> Choose an exam
+                // -> Get questions for the chosen exam
+                // -> Display these question one by one with forloop
+                // -> Check user input with the attached answer by the question
+                // -> when true add 1 to variable CountofCorrect
+                // -> After Exam check,if  CountofCorrect >= than Questions.size() / 2. if true set in exam the boolean result to true, if false set in exam the boolean to false.
+                // -> return to main menu
+
                 break;
             case 6:
                 result = "keuze 6";
