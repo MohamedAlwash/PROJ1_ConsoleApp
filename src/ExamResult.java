@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class ExamResult {
 
-    private ArrayList<Exam> exams = new ArrayList<>();
+
+    public ArrayList<Exam> exams = new ArrayList<>();
 
     public ArrayList<Exam> getExams() {
         return exams;

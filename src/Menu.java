@@ -1,5 +1,7 @@
 package src;
 
+import src.Exams.MathExam;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,6 +56,19 @@ public class Menu {
 //                result = "keuze 4";
                 break;
             case 5:
+
+                System.out.println("1. Wiskunde examen");
+                System.out.println("2. Engels examen");
+
+                Integer keuze = scanner.nextInt();
+
+                if(keuze == 1) {
+                    ArrayList<Question> questions = MathExam.GetExamQuestions();
+                }
+                else if(keuze == 2) {
+                    //engels exam vragen
+                }
+
                 result = "keuze 5";
                 // -> Menu with different exams (Math, English) with sout
                 // -> Choose an exam
