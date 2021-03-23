@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Menu {
 
     public String result = "";
+    private Student usingStudent;
 
     public String menuInterface() {
         Scanner scanner = new Scanner(System.in);
@@ -34,7 +35,9 @@ public class Menu {
             case 3:
                 System.out.println("Vul uw naam in:");
                 String studentName = scanner.nextLine();
-                Student.ALL_STUDENTS.add(new Student(studentName));
+                usingStudent = new Student(studentName);
+
+                Student.ALL_STUDENTS.add(usingStudent);
 
                 break;
             case 4:
@@ -63,10 +66,12 @@ public class Menu {
                 Integer keuze = scanner.nextInt();
 
                 if(keuze == 1) {
-                    ArrayList<Question> questions = MathExam.GetExamQuestions();
+                    ArrayList<Question> questions = usingStudent.getExamResult().chooseExam(ExamTypes.Math);
+                    System.out.println(questions);
                 }
                 else if(keuze == 2) {
-                    //engels exam vragen
+                    ArrayList<Question> questions = usingStudent.getExamResult().chooseExam(ExamTypes.English);
+                    System.out.println(questions);
                 }
 
                 result = "keuze 5";
@@ -92,7 +97,7 @@ public class Menu {
     }
 
 
-    public static int menuOpties() {
+    private int menuOpties() {
         int selectie;
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> menuOpties = new ArrayList<>();
