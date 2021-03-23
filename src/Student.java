@@ -11,35 +11,17 @@ class Student {
     public static final ArrayList<Student> ALL_STUDENTS = new ArrayList<>();
     private static Integer studentNumber = 10000000;
 
+    private ExamResult examResult;
+
     //private variables
     private String studentName;
-    private ArrayList<Exam> exams = new ArrayList<>();
 
 
     public Student(String studentName) {
         this.studentName = studentName;
+        this.examResult = new ExamResult();
         // ALL_STUDENTS.add(this);
     }
-
-    public ArrayList<Exam> getExams() {
-        return exams;
-    }
-
-    public ArrayList<Question> ChooseExam(ExamTypes examType){
-        switch (examType){
-            case Math:
-                MathExam mathExam = new MathExam(studentName, studentNumber);
-                exams.add(mathExam);
-                return mathExam.GetExamQuestions();
-            case English:
-                EnglishExam englishExam = new EnglishExam(studentName, studentNumber);
-                exams.add(englishExam);
-                return englishExam.GetExamQuestions();
-        }
-
-        return null;
-    }
-
 
     private Integer createStudentNumber() {
         this.studentNumber = this.studentNumber;
