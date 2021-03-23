@@ -13,7 +13,7 @@ public class MathExam extends Exam {
     }
 
     @Override
-    public ArrayList<Question> GetExamQuestions() {
+    public ArrayList<Question> getExamQuestions() {
         ArrayList<Question> mathQuestions = new ArrayList<Question>();
 
         //Questions Math

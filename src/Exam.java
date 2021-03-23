@@ -1,8 +1,5 @@
 package src;
 
-import src.Exams.EnglishExam;
-import src.Exams.MathExam;
-
 import java.util.ArrayList;
 
 public abstract class Exam{
@@ -40,9 +37,5 @@ public abstract class Exam{
         this.examType = examType;
     }
 
-    public abstract ArrayList<Question> GetExamQuestions();
+    public abstract ArrayList<Question> getExamQuestions();
 }
-
-
-
-

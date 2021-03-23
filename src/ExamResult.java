@@ -2,7 +2,6 @@ package src;
 
 import src.Exams.EnglishExam;
 import src.Exams.MathExam;
-
 import java.util.ArrayList;
 
 public class ExamResult {
@@ -14,16 +13,16 @@ public class ExamResult {
         return exams;
     }
 
-    public ArrayList<Question> ChooseExam(ExamTypes examType){
+    public ArrayList<Question> chooseExam(ExamTypes examType){
         switch (examType){
             case Math:
                 MathExam mathExam = new MathExam();
                 exams.add(mathExam);
-                return mathExam.GetExamQuestions();
+                return mathExam.getExamQuestions();
             case English:
                 EnglishExam englishExam = new EnglishExam();
                 exams.add(englishExam);
-                return englishExam.GetExamQuestions();
+                return englishExam.getExamQuestions();
         }
         return null;
     }

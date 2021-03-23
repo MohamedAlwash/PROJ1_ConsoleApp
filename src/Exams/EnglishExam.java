@@ -13,7 +13,7 @@ public class EnglishExam extends Exam {
     }
 
     @Override
-    public ArrayList<Question> GetExamQuestions() {
+    public ArrayList<Question> getExamQuestions() {
         ArrayList<Question> englishQuestions = new ArrayList<Question>();
 
         //Questions English
