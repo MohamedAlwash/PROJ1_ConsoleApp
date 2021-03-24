@@ -23,7 +23,11 @@ public class Menu {
 // switch case voor menu opties
         switch (selectie) {
             case 1:
-                result = "keuze 1";
+                ExamTypes[] examTypes = ExamTypes.values();
+                for(ExamTypes exam : examTypes)
+                {
+                    System.out.println(exam);
+                }
                 break;
             case 2: // List of students
                 //print naam en de unieke hashcode van het object
@@ -131,6 +135,12 @@ public class Menu {
             case 7:
                 result = "keuze 7";
                 break;
+            case 8:
+                result = "keuze 8";
+                break;
+//            case 0:
+//                result = "keuze 0";
+//                break;
 
         }
         return result;
@@ -146,7 +156,10 @@ public class Menu {
         menuOpties.add("3) Nieuwe studenten ");
         menuOpties.add("4) Student verwijderen");
         menuOpties.add("5) Examen afnemen");
-        menuOpties.add("6) Welke student heeft de meeste examens gehaald?");
+        menuOpties.add("6) Is student geslaagd voor een test?");
+        menuOpties.add("7) Welke examens heeft student gehaald?");
+        menuOpties.add("8) Welke student heeft de meeste examens gehaald?");
+        //menuOpties.add("0) Exit");
 
         for (String opties : menuOpties) {
             System.out.println(opties);

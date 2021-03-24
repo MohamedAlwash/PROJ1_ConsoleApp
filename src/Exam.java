@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public abstract class Exam{
+public abstract class Exam {
 
     private Boolean result;
     private ExamTypes examType;
