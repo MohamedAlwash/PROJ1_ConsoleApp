@@ -10,17 +10,19 @@ public abstract class Exam{
     public Boolean getResult() {
         return result;
     }
-
-    private Boolean checkAnswers(ArrayList<Question> questions, ArrayList<String> answers){
+    public Boolean checkAnswers(ArrayList<String> answers){
         Integer correct = 0;
+        ArrayList<Question> questions = getExamQuestions();
         for (int i = 0; i < questions.size(); i++) {
             if (questions.get(i).getAnswer().equals(answers.get(i)) ) {
                 correct++;
             }
         }
         if(correct >= questions.size() / 2) {
+            this.result = true;
             return true;
         } else {
+            this.result = false;
             return false;
         }
     }
