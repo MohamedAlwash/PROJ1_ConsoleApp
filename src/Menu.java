@@ -45,32 +45,13 @@ public class Menu {
 
             case 3: // Create new Student
                 System.out.println("Vul uw naam in:");
-                String studentNaam = scanner.nextLine();
+                String studentNaam = Checker.SafeStringInput();
 
                 System.out.println("Vul je studentnummer in:");
-                int studentNumber = scanner.nextInt();
 
-                String convertedStudentNumber = String.valueOf(studentNumber);
+                Integer studentNumber = Checker.SafeCreateStudentNumber(studentHandler);
 
-                while (convertedStudentNumber.length() != 8) {
-                    System.out.println("8 karakters vereist, probeer opnieuw");
-                    studentNumber = scanner.nextInt();
-
-                    convertedStudentNumber = String.valueOf(studentNumber);
-                }
-
-                for(Student studentNumbers : studentHandler.getAllStudents()) {
-
-                    while(convertedStudentNumber.equals(studentNumbers.getStudentNumber())) {
-                        System.out.println("Studentnummer bestaat al, vul andere in");
-
-                        studentNumber = scanner.nextInt();
-                        convertedStudentNumber = String.valueOf(studentNumber);
-
-                    }
-                        studentHandler.AddStudent(studentNaam, convertedStudentNumber);
-                }
-
+                studentHandler.AddStudent(studentNaam, studentNumber);
                 break;
             case 4: //remove student
 
@@ -91,32 +72,27 @@ public class Menu {
             case 5:
 
                 System.out.println("Welke student ben je?");
+
+
+
                 int x = 0;
                 for (Student student: studentHandler.getAllStudents()) {
                     x++;
                     System.out.println(x + ". " + student.getName());
                 }
-                int studentChoise = scanner.nextInt();
 
-                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
+                int studentChoice = Checker.SafeIntegerInputWithInBounds(0,studentHandler.getAllStudents().size());
+                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoice -1 ));
+
 
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
-                boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
 
-                scanner.nextLine();
-                while(!examChoice) {
-                    int choice = scanner.nextInt();
-                    scanner.nextLine();
-                    if (choice == 1) {
-                        examChoice = true;
-                    } else if (choice == 2) {
-                        examPick = ExamTypes.English;
-                        examChoice = true;
-                    } else {
-                        System.out.println("Maak een keuze uit de opties");
-                    }
+                int choice = Checker.SafeIntegerInputWithInBounds(1,2);
+                if (choice == 1) {
+                } else if (choice == 2) {
+                    examPick = ExamTypes.English;
                 }
 
 
@@ -128,7 +104,7 @@ public class Menu {
                     System.out.println(examQuestions.getQuestion());
 
                     System.out.println("Geef antwoord:");
-                    String answer = scanner.nextLine();
+                    String answer = Checker.SafeStringInput();
                     answers.add(answer);
 
                 }
@@ -152,7 +128,7 @@ public class Menu {
                     System.out.println(index + ") " + student.getName());
                 }
 
-                int chooseNumber = scanner.nextInt();
+                int chooseNumber = Checker.SafeIntegerInput();
 
                 ArrayList<Student> student =  this.studentHandler.getAllStudents();
                 System.out.println(student.get(chooseNumber-1).getName());
@@ -202,7 +178,7 @@ public class Menu {
         System.out.println("Maak een keuze");
 
         try{
-            selectie = scanner.nextInt();
+            selectie = Checker.SafeIntegerInput();
         }
         catch (Exception e){
             System.out.println("YOU BITCH, THAT'S THE WRONG NUMBER.\n");
