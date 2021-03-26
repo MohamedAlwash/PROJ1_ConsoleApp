@@ -11,9 +11,9 @@ class Main
         Menu result = new Menu(new StudentHandler());
         int exit = 0;
 
-        Student.ALL_STUDENTS.add(new Student("Ashwin"));
-        Student.ALL_STUDENTS.add(new Student("Mohamed"));
-        Student.ALL_STUDENTS.add(new Student("Richall"));
+        Student.ALL_STUDENTS.add(new Student("Ashwin", "12345678"));
+        Student.ALL_STUDENTS.add(new Student("Mohamed", "87654321"));
+        Student.ALL_STUDENTS.add(new Student("Richall","10101010" ));
 
         
 

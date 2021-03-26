@@ -3,6 +3,7 @@ package src;
 import src.Exams.EnglishExam;
 import src.Exams.MathExam;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,7 +38,7 @@ public class Menu {
                 StringBuilder sb = new StringBuilder();
 
                 for (Student allStudent : studentHandler.getAllStudents()) {
-                    sb.append(allStudent.getName() + " " + allStudent.hashCode());
+                    sb.append(allStudent.getName() + " " + allStudent.getStudentNumber());
                     sb.append("\n");
 
                 }
@@ -45,7 +46,32 @@ public class Menu {
 
             case 3: // Create new Student
                 System.out.println("Vul uw naam in:");
-                studentHandler.AddStudent(scanner.nextLine());
+                String studentNaam = scanner.nextLine();
+
+                System.out.println("Vul je studentnummer in:");
+                int studentNumber = scanner.nextInt();
+
+                String convertedStudentNumber = String.valueOf(studentNumber);
+
+                while (convertedStudentNumber.length() != 8) {
+                    System.out.println("8 karakters vereist, probeer opnieuw");
+                    studentNumber = scanner.nextInt();
+
+                    convertedStudentNumber = String.valueOf(studentNumber);
+                }
+
+                for(Student studentNumbers : studentHandler.getAllStudents()) {
+
+                    while(convertedStudentNumber.equals(studentNumbers.getStudentNumber())) {
+                        System.out.println("Studentnummer bestaat al, vul andere in");
+
+                        studentNumber = scanner.nextInt();
+                        convertedStudentNumber = String.valueOf(studentNumber);
+
+                    }
+                        studentHandler.AddStudent(studentNaam, convertedStudentNumber);
+                }
+
                 break;
             case 4: //remove student
 
@@ -56,7 +82,7 @@ public class Menu {
                 int i = 0;
                 for (Student allStudent : studentHandler.getAllStudents()) {
                     i++;
-                    System.out.println((i + ". " + allStudent.getName() + " " + allStudent.hashCode()));
+                    System.out.println((i + ". " + allStudent.getName() + " " + allStudent.getStudentNumber()));
                 }
                 System.out.println("Kies index");
                 studentHandler.RemoveStudent(sc.nextInt());
