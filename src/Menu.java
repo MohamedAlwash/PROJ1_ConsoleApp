@@ -68,7 +68,6 @@ public class Menu {
 
                 System.out.println("Welke student ben je?");
 
-                studentHandler.DisplaysAllStudents();
 
                 /*int studentChoice = Tools.SafeIntegerInputWithInBounds(0,studentHandler.getAllStudents().size());
                 studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoice - 1));*/
@@ -144,7 +143,7 @@ public class Menu {
                 for (int i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
                     Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
                     if (passedExam.getResult()) {
-                        System.out.println( (i+1) + "." + passedExam.getExamType().toString());
+                        System.out.println( (i+1) + ". " + passedExam.getExamType().toString());
                     }
                 }
                 break;
