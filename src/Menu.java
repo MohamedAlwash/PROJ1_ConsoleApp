@@ -106,7 +106,6 @@ public class Menu {
                     System.out.println("Geef antwoord:");
                     String answer = scanner.nextLine();
                     answers.add(answer);
-                    System.out.println(answers);
 
                 }
                 passed = exam.checkAnswers(answers);
