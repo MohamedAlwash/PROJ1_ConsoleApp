@@ -1,20 +1,22 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public abstract class Exam {
 
     private Boolean result;
     private ExamTypes examType;
+    private Integer correct = 0;
 
     public Boolean getResult() {
         return result;
     }
     public Boolean checkAnswers(ArrayList<String> answers){
-        Integer correct = 0;
+
         ArrayList<Question> questions = getExamQuestions();
         for (int i = 0; i < questions.size(); i++) {
-            if (questions.get(i).getAnswer().equals(answers.get(i)) ) {
+            if (questions.get(i).getAnswer().toLowerCase(Locale.ROOT).equals(answers.get(i).toLowerCase(Locale.ROOT)) ) {
                 correct++;
             }
         }

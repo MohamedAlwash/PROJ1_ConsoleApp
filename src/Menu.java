@@ -4,6 +4,7 @@ import src.Exams.EnglishExam;
 import src.Exams.MathExam;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -84,6 +85,7 @@ public class Menu {
                 scanner.nextLine();
                 while(!examChoice) {
                     choise = scanner.nextInt();
+                    scanner.nextLine();
                     if (choise == 1) {
                         examChoice = true;
                     } else if (choise == 2) {
@@ -95,7 +97,7 @@ public class Menu {
                 }
 
 
-                Exam exam = usingStudent.getExamResult().chooseExam(examPick);
+                Exam exam = studentHandler.getUsingStudent().getExamResult().chooseExam(examPick);
 
                 boolean passed = false;
                 ArrayList<String> answers = new ArrayList<String>();
@@ -134,9 +136,11 @@ public class Menu {
             case 8:
                 result = "keuze 8";
                 break;
-//            case 0:
-//                result = "keuze 0";
-//                break;
+
+            default:
+                System.out.println("Keuze bestaat niet, probeer opnieuw.\n");
+                menuInterface();
+                break;
 
         }
         return result;
@@ -144,7 +148,7 @@ public class Menu {
 
 
     private int menuOpties() {
-        int selectie;
+        int selectie = 0;
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> menuOpties = new ArrayList<>();
         menuOpties.add("1) Lijst met examens");
@@ -162,7 +166,15 @@ public class Menu {
         }
 
         System.out.println("Maak een keuze");
-        selectie = scanner.nextInt();
+
+        try{
+            selectie = scanner.nextInt();
+        }
+        catch (Exception e){
+            System.out.println("YOU BITCH, THAT'S THE WRONG NUMBER.\n");
+            menuInterface();
+        }
+
         return selectie;
     }
 
