@@ -62,6 +62,8 @@ public class Menu {
 
                 for(Student studentNumbers : studentHandler.getAllStudents()) {
 
+                    System.out.println(studentNumbers.getStudentNumber());
+
                     while(convertedStudentNumber.equals(studentNumbers.getStudentNumber())) {
                         System.out.println("Studentnummer bestaat al, vul andere in");
 
@@ -69,8 +71,8 @@ public class Menu {
                         convertedStudentNumber = String.valueOf(studentNumber);
 
                     }
-                        studentHandler.AddStudent(studentNaam, convertedStudentNumber);
                 }
+                studentHandler.AddStudent(studentNaam, convertedStudentNumber);
 
                 break;
             case 4: //remove student
