@@ -11,7 +11,6 @@ class Student {
     public Student(String studentName) {
         this.studentName = studentName;
         this.examResult = new ExamResult();
-        // ALL_STUDENTS.add(this);
     }
 
     public ExamResult getExamResult() {

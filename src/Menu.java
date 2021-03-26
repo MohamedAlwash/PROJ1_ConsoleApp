@@ -4,7 +4,6 @@ import src.Exams.EnglishExam;
 import src.Exams.MathExam;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -24,7 +23,7 @@ public class Menu {
 
 // switch case voor menu opties
         switch (selectie) {
-            case 1:
+            case 1: // List of all exams
                 ExamTypes[] examTypes = ExamTypes.values();
                 for(ExamTypes exam : examTypes)
                 {
@@ -80,15 +79,15 @@ public class Menu {
                 System.out.println("2. Engels examen");
                 boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
-                int choise = 0;
+                int choice = 0;
 
                 scanner.nextLine();
                 while(!examChoice) {
-                    choise = scanner.nextInt();
+                    choice = scanner.nextInt();
                     scanner.nextLine();
-                    if (choise == 1) {
+                    if (choice == 1) {
                         examChoice = true;
-                    } else if (choise == 2) {
+                    } else if (choice == 2) {
                         examPick = ExamTypes.English;
                         examChoice = true;
                     } else {
@@ -105,7 +104,9 @@ public class Menu {
                     System.out.println(examQuestions.getQuestion());
 
                     System.out.println("Geef antwoord:");
-                    answers.add(scanner.nextLine());
+                    String answer = scanner.nextLine();
+                    answers.add(answer);
+                    System.out.println(answers);
 
                 }
                 passed = exam.checkAnswers(answers);
