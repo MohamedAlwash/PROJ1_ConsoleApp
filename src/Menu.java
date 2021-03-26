@@ -79,14 +79,14 @@ public class Menu {
                 System.out.println("2. Engels examen");
                 boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
-                int choise = 0;
+                int choice = 0;
 
                 scanner.nextLine();
                 while(!examChoice) {
-                    choise = scanner.nextInt();
-                    if (choise == 1) {
+                    choice = scanner.nextInt();
+                    if (choice == 1) {
                         examChoice = true;
-                    } else if (choise == 2) {
+                    } else if (choice == 2) {
                         examPick = ExamTypes.English;
                         examChoice = true;
                     } else {
@@ -95,7 +95,7 @@ public class Menu {
                 }
 
 
-                Exam exam = usingStudent.getExamResult().chooseExam(examPick);
+                Exam exam = studentHandler.getUsingStudent().getExamResult().chooseExam(examPick);
 
                 boolean passed = false;
                 ArrayList<String> answers = new ArrayList<String>();
