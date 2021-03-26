@@ -162,8 +162,7 @@ public class Menu {
                 //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
             case 7:
-
-                ArrayList<Exam> passedExams = passedExams();
+                passedExams();
 
                 break;
             case 8:
@@ -201,7 +200,7 @@ public class Menu {
         return selectie;
     }
 
-    private ArrayList passedExams() {
+    private void passedExams() {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Welke student ben je?");
@@ -215,17 +214,15 @@ public class Menu {
         studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
 
 
-        ArrayList<Exam> passedExams = new ArrayList<>();
-
         int i;
 
         for (i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
             Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
             if (passedExam.getResult() == true ) {
-                passedExams.add(passedExam);
+                System.out.println( (i+1) + "." +passedExam.getExamType());
             }
         }
-        return passedExams;
+
 
     }
 
