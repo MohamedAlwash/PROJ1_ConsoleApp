@@ -3,7 +3,7 @@ package src;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Checker {
+public class Tools {
 
     // In bounds up to and including
     public static boolean IntegerInBounds(Integer input, Integer min, Integer max){
@@ -46,7 +46,7 @@ public class Checker {
     public static Integer SafeIntegerInput(){
         Scanner scanner = new Scanner(System.in);
 
-        Integer input;
+        int input;
 
         while (true){
             try{
@@ -64,15 +64,14 @@ public class Checker {
 
         String input = null;
 
-        boolean notValid = true;
+        boolean Valid = false;
 
-        while (notValid){
+        while (!Valid){
             try{
                 input = scanner.next();
-                notValid = !StringInBounds(input, min, max);
+                Valid = StringInBounds(input, min, max);
             }catch (Exception exception){
                 System.out.println("Input is niet geldig, probeer opnieuw");
-                continue;
             }
         }
 
@@ -82,7 +81,7 @@ public class Checker {
     public static Integer SafeIntegerInputWithInBounds(Integer min, Integer max){
         Scanner scanner = new Scanner(System.in);
 
-        Integer input = 0;
+        int input = 0;
 
         boolean Valid = false;
 
@@ -93,25 +92,13 @@ public class Checker {
                 Valid = IntegerInBounds(input, min, max);
             }catch (Exception exception){
                 System.out.println("Input is niet geldig, probeer opnieuw");
-                continue;
             }
         }
 
         return input;
     }
 
-    private static boolean CheckIfStudentNumberExist(Integer studentNumber, StudentHandler studentHandler){
 
-        for (Student student: studentHandler.getAllStudents()) {
-            if(studentNumber.equals(student.getStudentNumber())){
-                System.out.println("Student nummer bestaat al, probeer een anderen.");
-                return false;
-            }
-        }
-
-
-        return true;
-    }
 
     public static Integer SafeCreateStudentNumber(StudentHandler studentHandler){
 
@@ -129,13 +116,30 @@ public class Checker {
                 Valid = StringInBounds(temp, 8, 8) && CheckIfStudentNumberExist(Integer.parseInt(temp), studentHandler);
             }catch (Exception exception){
                 System.out.println("Input is niet geldig, probeer opnieuw");
-                continue;
             }
         }
 
 
         return Integer.parseInt(temp);
 
+    }
+
+    private static boolean CheckIfStudentNumberExist(Integer studentNumber, StudentHandler studentHandler){
+
+        for (Student student: studentHandler.getAllStudents()) {
+            if(studentNumber.equals(student.getStudentNumber())){
+                System.out.println("Student nummer bestaat al, probeer een anderen.");
+                return false;
+            }
+        }
+
+
+        return true;
+    }
+
+    public static void DisplayMenuName(String text){
+        System.out.println(text);
+        System.out.println();
     }
 
 

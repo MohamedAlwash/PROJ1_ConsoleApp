@@ -1,16 +1,13 @@
 package src;
 
-import src.Exams.EnglishExam;
-import src.Exams.MathExam;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Menu {
 
-    public String result = "";
-    private Student usingStudent;
+    //public String result = "";
+    //private Student usingStudent;
 
     private StudentHandler studentHandler;
 
@@ -18,40 +15,42 @@ public class Menu {
         this.studentHandler = studentHandler;
     }
 
-    public String menuInterface() {
+    public void menuInterface() {
         Scanner scanner = new Scanner(System.in);
-        int selectie = menuOpties();
+        //int selectie = menuOpties();
 
-// switch case voor menu opties
-        switch (selectie) {
+        // switch case voor menu opties
+        switch (menuOptions()) {
             case 1: // List of all exams
-                ExamTypes[] examTypes = ExamTypes.values();
-                for(ExamTypes exam : examTypes)
+                for(ExamTypes exam : ExamTypes.values())
                 {
                     System.out.println(exam);
                 }
                 break;
             case 2: // List of students
 
-
-                StringBuilder sb = new StringBuilder();
+                /*StringBuilder sb = new StringBuilder();
 
                 for (Student allStudent : studentHandler.getAllStudents()) {
-                    sb.append(allStudent.getName() + " " + allStudent.getStudentNumber());
+                    sb.append(allStudent.getName() + " " + allStudent.getStudentNumber() + "\n");
                     sb.append("\n");
 
-                }
-                return sb.toString();
+                }*/
+
+                studentHandler.DisplaysAllStudents();
+
+                break;
 
             case 3: // Create new Student
+
                 System.out.println("Vul uw naam in:");
-                String studentNaam = Checker.SafeStringInput();
+                String studentName = Tools.SafeStringInput();
 
                 System.out.println("Vul je studentnummer in:");
+                Integer studentNumber = Tools.SafeCreateStudentNumber(studentHandler);
 
-                Integer studentNumber = Checker.SafeCreateStudentNumber(studentHandler);
+                studentHandler.AddStudent(studentName, studentNumber);
 
-                studentHandler.AddStudent(studentNaam, studentNumber);
                 break;
             case 4: //remove student
 
@@ -59,37 +58,29 @@ public class Menu {
 
                 System.out.println("Welke student wilt u verwijderen?");
 
-                int i = 0;
-                for (Student allStudent : studentHandler.getAllStudents()) {
-                    i++;
-                    System.out.println((i + ". " + allStudent.getName() + " " + allStudent.getStudentNumber()));
-                }
-                System.out.println("Kies index");
+                studentHandler.DisplaysAllStudents();
+
+                System.out.println("\nMaak een keuze:");
                 studentHandler.RemoveStudent(sc.nextInt());
 
-//                result = "keuze 4";
                 break;
-            case 5:
+            case 5: //Attempt Exam
 
                 System.out.println("Welke student ben je?");
 
+                studentHandler.DisplaysAllStudents();
 
+                /*int studentChoice = Tools.SafeIntegerInputWithInBounds(0,studentHandler.getAllStudents().size());
+                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoice - 1));*/
 
-                int x = 0;
-                for (Student student: studentHandler.getAllStudents()) {
-                    x++;
-                    System.out.println(x + ". " + student.getName());
-                }
-
-                int studentChoice = Checker.SafeIntegerInputWithInBounds(0,studentHandler.getAllStudents().size());
-                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoice -1 ));
-
+                studentHandler.ChooseStudent();
 
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
+
                 ExamTypes examPick = ExamTypes.Math;
 
-                int choice = Checker.SafeIntegerInputWithInBounds(1,2);
+                int choice = Tools.SafeIntegerInputWithInBounds(1,2);
                 if (choice == 1) {
                 } else if (choice == 2) {
                     examPick = ExamTypes.English;
@@ -104,7 +95,7 @@ public class Menu {
                     System.out.println(examQuestions.getQuestion());
 
                     System.out.println("Geef antwoord:");
-                    String answer = Checker.SafeStringInput();
+                    String answer = Tools.SafeStringInput();
                     answers.add(answer);
 
                 }
@@ -122,13 +113,9 @@ public class Menu {
                 int index = 0;
                 System.out.println("Welke student, kies een index");
 
-                for(Student student : this.studentHandler.getAllStudents())
-                {
-                    index++;
-                    System.out.println(index + ") " + student.getName());
-                }
+                studentHandler.DisplaysAllStudents();
 
-                int chooseNumber = Checker.SafeIntegerInput();
+                int chooseNumber = Tools.SafeIntegerInput();
 
                 ArrayList<Student> student =  this.studentHandler.getAllStudents();
                 System.out.println(student.get(chooseNumber-1).getName());
@@ -141,79 +128,84 @@ public class Menu {
                 //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
             case 7:
-                passedExams();
 
+                /*int x = 0;
+                for (Student student: studentHandler.getAllStudents()) {
+                x++;
+                System.out.println(x + ". " + student.getName());
+                }
+                int studentChoise = input.nextInt();
+
+                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));*/
+
+                System.out.println("Welke student ben je?");
+                studentHandler.ChooseStudent();
+
+                for (int i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
+                    Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
+                    if (passedExam.getResult()) {
+                        System.out.println( (i+1) + "." + passedExam.getExamType().toString());
+                    }
+                }
                 break;
             case 8:
-                result = "keuze 8";
                 break;
-
-            default:
-                System.out.println("Keuze bestaat niet, probeer opnieuw.\n");
-                menuInterface();
+            case 9:
+                System.exit(1);
                 break;
 
         }
-        return result;
+
+        Continue();
     }
 
 
-    private int menuOpties() {
-        int selectie = 0;
+    private int menuOptions() {
+        int select = 0;
         Scanner scanner = new Scanner(System.in);
+
         ArrayList<String> menuOpties = new ArrayList<>();
-        menuOpties.add("1) Lijst met examens");
-        menuOpties.add("2) Lijst met studenten");
-        menuOpties.add("3) Nieuwe studenten ");
-        menuOpties.add("4) Student verwijderen");
-        menuOpties.add("5) Examen afnemen");
-        menuOpties.add("6) Is student geslaagd voor een test?");
-        menuOpties.add("7) Welke examens heeft student gehaald?");
-        menuOpties.add("8) Welke student heeft de meeste examens gehaald?");
-        //menuOpties.add("0) Exit");
 
-        for (String opties : menuOpties) {
-            System.out.println(opties);
+        menuOpties.add("1. Lijst met examens");
+        menuOpties.add("2. Lijst met studenten");
+        menuOpties.add("3. Nieuwe studenten ");
+        menuOpties.add("4. Student verwijderen");
+        menuOpties.add("5. Examen afnemen");
+        menuOpties.add("6. Is student geslaagd voor een test?");
+        menuOpties.add("7. Welke examens heeft student gehaald?");
+        menuOpties.add("8. Welke student heeft de meeste examens gehaald?");
+        menuOpties.add("9. Exit");
+
+        for (String option: menuOpties) {
+            System.out.println(option);
         }
 
-        System.out.println("Maak een keuze");
+        System.out.println("\nMaak een keuze: ");
 
-        try{
-            selectie = Checker.SafeIntegerInput();
-        }
-        catch (Exception e){
-            System.out.println("YOU BITCH, THAT'S THE WRONG NUMBER.\n");
-            menuInterface();
-        }
+        select = Tools.SafeIntegerInputWithInBounds(1, menuOpties.size());
+        System.out.println();
+        Tools.DisplayMenuName(menuOpties.get(select - 1));
 
-        return selectie;
+        return select;
     }
 
-    private void passedExams() {
-        Scanner input = new Scanner(System.in);
+    private void Continue(){
 
-        System.out.println("Welke student ben je?");
-        int x = 0;
-        for (Student student: studentHandler.getAllStudents()) {
-            x++;
-            System.out.println(x + ". " + student.getName());
+        System.out.println("\nKeuze menu:");
+        System.out.println("1. Terug naar Main menu");
+        System.out.println("2. Exit");
+        System.out.println("\nMaak een keuze: ");
+
+        switch (Tools.SafeIntegerInputWithInBounds(1, 2)){
+            case 1:
+                Tools.DisplayMenuName("1. Terug naar Main menu");
+                menuInterface();
+            case 2:
+                Tools.DisplayMenuName("2. Exit");
+                System.exit(1);
         }
-        int studentChoise = input.nextInt();
-
-        studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
-
-
-        int i;
-
-        for (i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
-            Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
-            if (passedExam.getResult() == true ) {
-                System.out.println( (i+1) + "." +passedExam.getExamType());
-            }
-        }
-
-
     }
+
 
 }
 

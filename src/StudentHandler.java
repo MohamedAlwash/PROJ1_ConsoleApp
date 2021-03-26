@@ -33,4 +33,17 @@ public class StudentHandler {
         getAllStudents().remove(studentIndex-1);
 
     }
+
+    public void DisplaysAllStudents(){
+        for (int i = 0; i < getAllStudents().size(); i++){
+            System.out.println((i + 1) + ". " + getAllStudents().get(i).getName() + " - " + getAllStudents().get(i).getStudentNumber());
+        }
+    }
+
+    public void ChooseStudent(){
+
+        DisplaysAllStudents();
+        setUsingStudent(getAllStudents().get(Tools.SafeIntegerInputWithInBounds(1, getAllStudents().size()) - 1));
+
+    }
 }

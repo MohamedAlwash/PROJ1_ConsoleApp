@@ -11,22 +11,24 @@ class Main
 
         StudentHandler studentHandler = new StudentHandler();
 
-        Menu result = new Menu(studentHandler);
+        //Menu result = new Menu(studentHandler);
+        Menu menu = new Menu(studentHandler);
         int exit = 0;
 
         studentHandler.AddStudent("Ashwin", 12345678);
         studentHandler.AddStudent("Mohamed", 18046533);
         studentHandler.AddStudent("Richall", 2345791);
 
-        
 
-        System.out.println(result.menuInterface());
+        menu.menuInterface();
+
+        /*System.out.println(result.menuInterface());
         System.out.println("typ 1 om terug te gaan:");
         exit=sc.nextInt();
         while(exit == 1 ){
             System.out.println(result.menuInterface());
             System.out.println("typ 1 om terug te gaan:");
             exit=sc.nextInt();
-        }
+        }*/
     }
 }
