@@ -73,7 +73,7 @@ public class Menu {
                 }
                 int studentChoise = scanner.nextInt();
 
-                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise));
+                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
 
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
