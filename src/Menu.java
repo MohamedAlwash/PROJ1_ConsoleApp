@@ -71,24 +71,24 @@ public class Menu {
                     x++;
                     System.out.println(x + ". " + student.getName());
                 }
-                Integer studentChoise = scanner.nextInt();
+                int studentChoise = scanner.nextInt();
 
                 studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise));
 
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
-                boolean examChoise = false;
+                boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
-                Integer choise;
+                int choise = 0;
 
                 scanner.nextLine();
-                while(!examChoise) {
+                while(!examChoice) {
                     choise = scanner.nextInt();
                     if (choise == 1) {
-                        examChoise = true;
+                        examChoice = true;
                     } else if (choise == 2) {
                         examPick = ExamTypes.English;
-                        examChoise = true;
+                        examChoice = true;
                     } else {
                         System.out.println("Maak een keuze uit de opties");
                     }
