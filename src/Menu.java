@@ -61,7 +61,6 @@ public class Menu {
                 System.out.println("Kies index");
                 studentHandler.RemoveStudent(sc.nextInt());
 
-//                result = "keuze 4";
                 break;
             case 5:
 
