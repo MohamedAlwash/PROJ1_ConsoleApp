@@ -77,18 +77,18 @@ public class Menu {
 
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
-                String examChoise = "none";
+                boolean examChoise = false;
                 ExamTypes examPick = ExamTypes.Math;
                 Integer choise;
 
                 scanner.nextLine();
-                while(examChoise == "none") {
+                while(!examChoise) {
                     choise = scanner.nextInt();
                     if (choise == 1) {
-                        examChoise = "picked";
+                        examChoise = true;
                     } else if (choise == 2) {
                         examPick = ExamTypes.English;
-                        examChoise = "picked";
+                        examChoise = true;
                     } else {
                         System.out.println("Maak een keuze uit de opties");
                     }
