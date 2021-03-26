@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StudentHandler {
 
@@ -46,4 +47,40 @@ public class StudentHandler {
         setUsingStudent(getAllStudents().get(Tools.SafeIntegerInputWithInBounds(1, getAllStudents().size()) - 1));
 
     }
+
+    public Integer SafeCreateStudentNumber(){
+
+        Scanner scanner = new Scanner(System.in);
+
+        Integer input = 0;
+
+        boolean Valid = false;
+
+        while (!Valid){
+            try{
+                input = Tools.SafeIntegerInputWithInBounds(0, 99999999);
+                Valid = CheckIfStudentNumberExist(input);
+            }catch (Exception exception){
+                System.out.println("Input is niet geldig, probeer opnieuw");
+            }
+        }
+
+        return input;
+
+    }
+
+    private boolean CheckIfStudentNumberExist(Integer studentNumber){
+
+        for (Student student: getAllStudents()) {
+            if(studentNumber.equals(student.getStudentNumber())){
+                System.out.println("Student nummer bestaat al, probeer een anderen.");
+                return false;
+            }
+        }
+
+
+        return true;
+    }
+
+
 }

@@ -47,9 +47,12 @@ public class Menu {
                 String studentName = Tools.SafeStringInput();
 
                 System.out.println("Vul je studentnummer in:");
-                Integer studentNumber = Tools.SafeCreateStudentNumber(studentHandler);
+                Integer studentNumber = studentHandler.SafeCreateStudentNumber();
 
                 studentHandler.AddStudent(studentName, studentNumber);
+
+                System.out.println();
+                System.out.println(studentName + " - " + studentNumber + " is toegevoegd.");
 
                 break;
             case 4: //remove student
@@ -167,7 +170,7 @@ public class Menu {
 
         menuOpties.add("1. Lijst met examens");
         menuOpties.add("2. Lijst met studenten");
-        menuOpties.add("3. Nieuwe studenten ");
+        menuOpties.add("3. Student toevoegen ");
         menuOpties.add("4. Student verwijderen");
         menuOpties.add("5. Examen afnemen");
         menuOpties.add("6. Is student geslaagd voor een test?");

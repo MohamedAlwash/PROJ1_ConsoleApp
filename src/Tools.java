@@ -27,7 +27,6 @@ public class Tools {
         return false;
     }
 
-
     public static String SafeStringInput(){
         Scanner scanner = new Scanner(System.in);
 
@@ -96,45 +95,6 @@ public class Tools {
         }
 
         return input;
-    }
-
-
-
-    public static Integer SafeCreateStudentNumber(StudentHandler studentHandler){
-
-        Scanner scanner = new Scanner(System.in);
-
-        Integer input = 0;
-        String temp = "";
-
-
-        boolean Valid = false;
-
-        while (!Valid){
-            try{
-                temp = scanner.next();
-                Valid = StringInBounds(temp, 8, 8) && CheckIfStudentNumberExist(Integer.parseInt(temp), studentHandler);
-            }catch (Exception exception){
-                System.out.println("Input is niet geldig, probeer opnieuw");
-            }
-        }
-
-
-        return Integer.parseInt(temp);
-
-    }
-
-    private static boolean CheckIfStudentNumberExist(Integer studentNumber, StudentHandler studentHandler){
-
-        for (Student student: studentHandler.getAllStudents()) {
-            if(studentNumber.equals(student.getStudentNumber())){
-                System.out.println("Student nummer bestaat al, probeer een anderen.");
-                return false;
-            }
-        }
-
-
-        return true;
     }
 
     public static void DisplayMenuName(String text){
