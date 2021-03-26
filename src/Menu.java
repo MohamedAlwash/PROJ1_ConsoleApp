@@ -3,6 +3,7 @@ package src;
 import src.Exams.EnglishExam;
 import src.Exams.MathExam;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,13 +32,12 @@ public class Menu {
                 }
                 break;
             case 2: // List of students
-                //print naam en de unieke hashcode van het object
 
 
                 StringBuilder sb = new StringBuilder();
 
                 for (Student allStudent : studentHandler.getAllStudents()) {
-                    sb.append(allStudent.getName() + " " + allStudent.hashCode());
+                    sb.append(allStudent.getName() + " " + allStudent.getStudentNumber());
                     sb.append("\n");
 
                 }
@@ -45,7 +45,32 @@ public class Menu {
 
             case 3: // Create new Student
                 System.out.println("Vul uw naam in:");
-                studentHandler.AddStudent(scanner.nextLine());
+                String studentNaam = scanner.nextLine();
+
+                System.out.println("Vul je studentnummer in:");
+                int studentNumber = scanner.nextInt();
+
+                String convertedStudentNumber = String.valueOf(studentNumber);
+
+                while (convertedStudentNumber.length() != 8) {
+                    System.out.println("8 karakters vereist, probeer opnieuw");
+                    studentNumber = scanner.nextInt();
+
+                    convertedStudentNumber = String.valueOf(studentNumber);
+                }
+
+                for(Student studentNumbers : studentHandler.getAllStudents()) {
+
+                    while(convertedStudentNumber.equals(studentNumbers.getStudentNumber())) {
+                        System.out.println("Studentnummer bestaat al, vul andere in");
+
+                        studentNumber = scanner.nextInt();
+                        convertedStudentNumber = String.valueOf(studentNumber);
+
+                    }
+                        studentHandler.AddStudent(studentNaam, convertedStudentNumber);
+                }
+
                 break;
             case 4: //remove student
 
@@ -56,7 +81,7 @@ public class Menu {
                 int i = 0;
                 for (Student allStudent : studentHandler.getAllStudents()) {
                     i++;
-                    System.out.println((i + ". " + allStudent.getName() + " " + allStudent.hashCode()));
+                    System.out.println((i + ". " + allStudent.getName() + " " + allStudent.getStudentNumber()));
                 }
                 System.out.println("Kies index");
                 studentHandler.RemoveStudent(sc.nextInt());
@@ -79,11 +104,10 @@ public class Menu {
                 System.out.println("2. Engels examen");
                 boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
-                int choice = 0;
 
                 scanner.nextLine();
                 while(!examChoice) {
-                    choice = scanner.nextInt();
+                    int choice = scanner.nextInt();
                     scanner.nextLine();
                     if (choice == 1) {
                         examChoice = true;
@@ -106,7 +130,6 @@ public class Menu {
                     System.out.println("Geef antwoord:");
                     String answer = scanner.nextLine();
                     answers.add(answer);
-                    System.out.println(answers);
 
                 }
                 passed = exam.checkAnswers(answers);
@@ -117,19 +140,29 @@ public class Menu {
                 } else {
                     System.out.println("Helaas, je hebt het niet gehaald");
                 }
-                // -> Menu with different exams (Math, English) with sout
-                // -> Choose an exam
-                // -> Get questions for the chosen exam
-                // -> Display these question one by one with forloop
-                // -> Check user input with the attached answer by the question
-                // -> when true add 1 to variable CountofCorrect
-                // -> After Exam check,if  CountofCorrect >= than Questions.size() /
-                // 2. if true set in exam the boolean result to true, if false set in exam the boolean to false.
-                // -> return to main menu
 
                 break;
-            case 6:
-                result = "keuze 6";
+            case 6: //Is student geslaagd voor een test?
+                int index = 0;
+                System.out.println("Welke student, kies een index");
+
+                for(Student student : this.studentHandler.getAllStudents())
+                {
+                    index++;
+                    System.out.println(index + ") " + student.getName());
+                }
+
+                int chooseNumber = scanner.nextInt();
+
+                ArrayList<Student> student =  this.studentHandler.getAllStudents();
+                System.out.println(student.get(chooseNumber-1).getName());
+                System.out.println(student.get(chooseNumber-1).getExamResult().getExams());
+//                for(Exam examResultaat : student.get(chooseNumber-1).getExamResult().getExams())
+//                {
+//                    System.out.println(examResultaat.getResult());
+//                }
+
+                //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
             case 7:
                 result = "keuze 7";

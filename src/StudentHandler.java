@@ -23,9 +23,9 @@ public class StudentHandler {
         this.usingStudent = usingStudent;
     }
 
-    public void AddStudent (String studentName){
+    public void AddStudent (String studentName, String studentNumber){
 
-        setUsingStudent(new Student(studentName));
+        setUsingStudent(new Student(studentName, studentNumber));
         getAllStudents().add(getUsingStudent());
     }
 
