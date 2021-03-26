@@ -32,7 +32,6 @@ public class Menu {
                 }
                 break;
             case 2: // List of students
-                //print naam en de unieke hashcode van het object
 
 
                 StringBuilder sb = new StringBuilder();
@@ -104,11 +103,10 @@ public class Menu {
                 System.out.println("2. Engels examen");
                 boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
-                int choice = 0;
 
                 scanner.nextLine();
                 while(!examChoice) {
-                    choice = scanner.nextInt();
+                    int choice = scanner.nextInt();
                     scanner.nextLine();
                     if (choice == 1) {
                         examChoice = true;
@@ -141,19 +139,29 @@ public class Menu {
                 } else {
                     System.out.println("Helaas, je hebt het niet gehaald");
                 }
-                // -> Menu with different exams (Math, English) with sout
-                // -> Choose an exam
-                // -> Get questions for the chosen exam
-                // -> Display these question one by one with forloop
-                // -> Check user input with the attached answer by the question
-                // -> when true add 1 to variable CountofCorrect
-                // -> After Exam check,if  CountofCorrect >= than Questions.size() /
-                // 2. if true set in exam the boolean result to true, if false set in exam the boolean to false.
-                // -> return to main menu
 
                 break;
-            case 6:
-                result = "keuze 6";
+            case 6: //Is student geslaagd voor een test?
+                int index = 0;
+                System.out.println("Welke student, kies een index");
+
+                for(Student student : this.studentHandler.getAllStudents())
+                {
+                    index++;
+                    System.out.println(index + ") " + student.getName());
+                }
+
+                int chooseNumber = scanner.nextInt();
+
+                ArrayList<Student> student =  this.studentHandler.getAllStudents();
+                System.out.println(student.get(chooseNumber-1).getName());
+                System.out.println(student.get(chooseNumber-1).getExamResult().getExams());
+//                for(Exam examResultaat : student.get(chooseNumber-1).getExamResult().getExams())
+//                {
+//                    System.out.println(examResultaat.getResult());
+//                }
+
+                //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
             case 7:
                 result = "keuze 7";

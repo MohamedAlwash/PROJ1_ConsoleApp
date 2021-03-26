@@ -14,15 +14,9 @@ class Main
         Menu result = new Menu(studentHandler);
         int exit = 0;
 
-<<<<<<< HEAD
-        Student.ALL_STUDENTS.add(new Student("Ashwin", "12345678"));
-        Student.ALL_STUDENTS.add(new Student("Mohamed", "87654321"));
-        Student.ALL_STUDENTS.add(new Student("Richall","10101010" ));
-=======
-        studentHandler.AddStudent("Ashwin");
-        studentHandler.AddStudent("Mohamed");
-        studentHandler.AddStudent("Richall");
->>>>>>> ac2adc666181ddbd992a9a59f805028b984b537f
+        studentHandler.AddStudent("Ashwin", "12345678");
+        studentHandler.AddStudent("Mohamed", "18046533");
+        studentHandler.AddStudent("Richall", "2345791");
 
         
 
