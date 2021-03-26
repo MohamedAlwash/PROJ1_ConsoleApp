@@ -61,6 +61,7 @@ public class Menu {
                 System.out.println("Kies index");
                 studentHandler.RemoveStudent(sc.nextInt());
 
+//                result = "keuze 4";
                 break;
             case 5:
 
@@ -79,7 +80,6 @@ public class Menu {
                 boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
                 int choise = 0;
-                int test = 0;
 
                 scanner.nextLine();
                 while(!examChoice) {
@@ -125,23 +125,8 @@ public class Menu {
                 // -> return to main menu
 
                 break;
-            case 6: //Is student geslaagd voor een test?
-                int index = 0;
-                System.out.println("Welke student, kies een index");
-
-                for(Student student : this.studentHandler.getAllStudents())
-                {
-                    index++;
-                    System.out.println(index + ") " + student.getName());
-                }
-
-                int chooseNumber = scanner.nextInt();
-
-                ArrayList<Student> student =  this.studentHandler.getAllStudents();
-                System.out.println(student.get(chooseNumber-1).getName());
-                System.out.println(student.get(chooseNumber-1).getExamResult().getExams());
-
-                //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
+            case 6:
+                result = "keuze 6";
                 break;
             case 7:
                 result = "keuze 7";
