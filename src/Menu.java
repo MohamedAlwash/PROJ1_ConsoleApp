@@ -78,13 +78,14 @@ public class Menu {
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
                 String examChoise = "none";
-                ExamTypes examPick = ExamTypes.Math;
+                ExamTypes examPick = null;
                 Integer choise;
 
                 scanner.nextLine();
                 while(examChoise == "none") {
                     choise = scanner.nextInt();
                     if (choise == 1) {
+                        examPick = ExamTypes.Math;
                         examChoise = "picked";
                     } else if (choise == 2) {
                         examPick = ExamTypes.English;

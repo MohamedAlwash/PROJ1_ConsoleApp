@@ -8,12 +8,15 @@ class Main
 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Menu result = new Menu(new StudentHandler());
+
+        StudentHandler studentHandler = new StudentHandler();
+
+        Menu result = new Menu(studentHandler);
         int exit = 0;
 
-        Student.ALL_STUDENTS.add(new Student("Ashwin"));
-        Student.ALL_STUDENTS.add(new Student("Mohamed"));
-        Student.ALL_STUDENTS.add(new Student("Richall"));
+        studentHandler.AddStudent("Ashwin");
+        studentHandler.AddStudent("Mohamed");
+        studentHandler.AddStudent("Richall");
 
         
 
