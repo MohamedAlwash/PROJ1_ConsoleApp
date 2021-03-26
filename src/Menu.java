@@ -84,6 +84,7 @@ public class Menu {
                 scanner.nextLine();
                 while(!examChoice) {
                     choice = scanner.nextInt();
+                    scanner.nextLine();
                     if (choice == 1) {
                         examChoice = true;
                     } else if (choice == 2) {
@@ -103,7 +104,9 @@ public class Menu {
                     System.out.println(examQuestions.getQuestion());
 
                     System.out.println("Geef antwoord:");
-                    answers.add(scanner.nextLine());
+                    String answer = scanner.nextLine();
+                    answers.add(answer);
+                    System.out.println(answers);
 
                 }
                 passed = exam.checkAnswers(answers);
