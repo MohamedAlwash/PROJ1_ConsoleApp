@@ -14,7 +14,6 @@ class Main
         Menu result = new Menu(studentHandler);
         int exit = 0;
 
-
         studentHandler.AddStudent("Ashwin", "12345678");
         studentHandler.AddStudent("Mohamed", "87654321");
         studentHandler.AddStudent("Richall", "10101010");

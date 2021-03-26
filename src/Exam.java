@@ -11,7 +11,7 @@ public abstract class Exam {
         return result;
     }
     public Boolean checkAnswers(ArrayList<String> answers){
-        Integer correct = 0;
+        int correct = 0;
         ArrayList<Question> questions = getExamQuestions();
         for (int i = 0; i < questions.size(); i++) {
             if (questions.get(i).getAnswer().equals(answers.get(i)) ) {
