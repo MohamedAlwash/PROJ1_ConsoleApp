@@ -13,16 +13,16 @@ public class ExamResult {
         return exams;
     }
 
-    public ArrayList<Question> chooseExam(ExamTypes examType){
+    public Exam chooseExam(ExamTypes examType){
         switch (examType){
             case Math:
                 MathExam mathExam = new MathExam();
                 exams.add(mathExam);
-                return mathExam.getExamQuestions();
+                return mathExam;
             case English:
                 EnglishExam englishExam = new EnglishExam();
                 exams.add(englishExam);
-                return englishExam.getExamQuestions();
+                return englishExam;
         }
         return null;
     }

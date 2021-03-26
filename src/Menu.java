@@ -65,38 +65,50 @@ public class Menu {
                 break;
             case 5:
 
+                System.out.println("Welke student ben je?");
+                int x = 0;
+                for (Student student: studentHandler.getAllStudents()) {
+                    x++;
+                    System.out.println(x + ". " + student.getName());
+                }
+                Integer studentChoise = scanner.nextInt();
+
+                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise));
+
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
+                String examChoise = "none";
+                ExamTypes examPick = ExamTypes.Math;
+                Integer choise;
 
-                Integer choise = scanner.nextInt();
                 scanner.nextLine();
+                while(examChoise == "none") {
+                    choise = scanner.nextInt();
+                    if (choise == 1) {
+                        examChoise = "picked";
+                    } else if (choise == 2) {
+                        examPick = ExamTypes.English;
+                        examChoise = "picked";
+                    } else {
+                        System.out.println("Maak een keuze uit de opties");
+                    }
+                }
+
+
+                Exam exam = usingStudent.getExamResult().chooseExam(examPick);
 
                 boolean passed = false;
                 ArrayList<String> answers = new ArrayList<String>();
+                for(Question examQuestions : exam.getExamQuestions()) {
+                    System.out.println(examQuestions.getQuestion());
 
-                if(choise == 1) {
-                    MathExam exam = new MathExam();
+                    System.out.println("Geef antwoord:");
+                    answers.add(scanner.nextLine());
 
-                    for(Question examQuestions : exam.getExamQuestions()) {
-                        System.out.println(examQuestions.getQuestion());
-
-                        System.out.println("Geef antwoord:");
-                        answers.add(scanner.nextLine());
-
-                    }
-                    passed = exam.checkAnswers(answers);
                 }
-                else if(choise == 2) {
-                    EnglishExam exam = new EnglishExam();
+                passed = exam.checkAnswers(answers);
 
-                    for(Question examQuestions : exam.getExamQuestions()) {
-                        System.out.println(examQuestions.getQuestion());
 
-                        System.out.println("Geef antwoord:");
-                        answers.add(scanner.nextLine());
-                    }
-                    passed = exam.checkAnswers(answers);
-                }
                 if (passed){
                     System.out.println("Gefeliciteerd, je hebt het gehaald");
                 } else {
