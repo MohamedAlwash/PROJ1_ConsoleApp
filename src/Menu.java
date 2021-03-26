@@ -1,9 +1,5 @@
 package src;
 
-import src.Exams.EnglishExam;
-import src.Exams.MathExam;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -166,7 +162,9 @@ public class Menu {
                 //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
             case 7:
-                result = "keuze 7";
+
+                ArrayList<Exam> passedExams = passedExams();
+
                 break;
             case 8:
                 result = "keuze 8";
@@ -201,6 +199,34 @@ public class Menu {
         System.out.println("Maak een keuze");
         selectie = scanner.nextInt();
         return selectie;
+    }
+
+    private ArrayList passedExams() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Welke student ben je?");
+        int x = 0;
+        for (Student student: studentHandler.getAllStudents()) {
+            x++;
+            System.out.println(x + ". " + student.getName());
+        }
+        int studentChoise = input.nextInt();
+
+        studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
+
+
+        ArrayList<Exam> passedExams = new ArrayList<>();
+
+        int i;
+
+        for (i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
+            Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
+            if (passedExam.getResult() == true ) {
+                passedExams.add(passedExam);
+            }
+        }
+        return passedExams;
+
     }
 
 }

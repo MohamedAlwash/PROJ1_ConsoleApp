@@ -22,10 +22,10 @@ public class MathExam extends Exam {
         mathQuestions.add(new Question("50 + 60 =", "90" ));
         mathQuestions.add(new Question("7 x 9 =", "63" ));
         mathQuestions.add(new Question("100 / 25 =", "4" ));
-        mathQuestions.add(new Question("(90 / 3) * 6 + 5 =", "23" ));
+        mathQuestions.add(new Question("(90 / 3) * 6 + 5 =", "185" ));
         mathQuestions.add(new Question("(6 / 2) * 5 + 5 =", "20" ));
         mathQuestions.add(new Question("(2 * 3) * 6 + 4 =", "40" ));
-        mathQuestions.add(new Question("(90 / 3) * (6 + 5) =", "33" ));
+        mathQuestions.add(new Question("(90 / 3) * (6 + 5) =", "330" ));
         mathQuestions.add(new Question("(2 * 3) * (6 + 5) =", "66" ));
 
         return mathQuestions;

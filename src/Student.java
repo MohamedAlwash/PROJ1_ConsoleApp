@@ -7,7 +7,6 @@ class Student {
     private ExamResult examResult;
     private String studentName;
     private String studentNumber;
-    public static ArrayList<Student> ALL_STUDENTS = new ArrayList<>();
 
     public Student(String studentName, String studentNumber) {
         this.studentName = studentName;
