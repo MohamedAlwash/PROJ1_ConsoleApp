@@ -141,7 +141,8 @@ public class Menu {
                 //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
             case 7:
-                result = "keuze 7";
+                passedExams();
+
                 break;
             case 8:
                 result = "keuze 8";
@@ -186,6 +187,32 @@ public class Menu {
         }
 
         return selectie;
+    }
+
+    private void passedExams() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Welke student ben je?");
+        int x = 0;
+        for (Student student: studentHandler.getAllStudents()) {
+            x++;
+            System.out.println(x + ". " + student.getName());
+        }
+        int studentChoise = input.nextInt();
+
+        studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
+
+
+        int i;
+
+        for (i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
+            Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
+            if (passedExam.getResult() == true ) {
+                System.out.println( (i+1) + "." +passedExam.getExamType());
+            }
+        }
+
+
     }
 
 }
