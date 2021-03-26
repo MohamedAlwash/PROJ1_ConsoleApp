@@ -41,6 +41,8 @@ public class QuestionTest {
 
         Assert.assertEquals(expectedMessage, a.getAnswer());
     }
+    
+
 
 //    @Test
 //    public void testSetNumberAnswer() {

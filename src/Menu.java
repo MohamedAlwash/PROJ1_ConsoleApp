@@ -24,7 +24,7 @@ public class Menu {
 
 // switch case voor menu opties
         switch (selectie) {
-            case 1:
+            case 1: // List of all exams
                 ExamTypes[] examTypes = ExamTypes.values();
                 for(ExamTypes exam : examTypes)
                 {
@@ -87,7 +87,6 @@ public class Menu {
                 System.out.println("Kies index");
                 studentHandler.RemoveStudent(sc.nextInt());
 
-//                result = "keuze 4";
                 break;
             case 5:
 
@@ -97,31 +96,32 @@ public class Menu {
                     x++;
                     System.out.println(x + ". " + student.getName());
                 }
-                Integer studentChoise = scanner.nextInt();
+                int studentChoise = scanner.nextInt();
 
-                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise));
+                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));
 
                 System.out.println("1. Wiskunde examen");
                 System.out.println("2. Engels examen");
-                String examChoise = "none";
+                boolean examChoice = false;
                 ExamTypes examPick = ExamTypes.Math;
-                Integer choise;
+                int choice = 0;
 
                 scanner.nextLine();
-                while(examChoise == "none") {
-                    choise = scanner.nextInt();
-                    if (choise == 1) {
-                        examChoise = "picked";
-                    } else if (choise == 2) {
+                while(!examChoice) {
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                    if (choice == 1) {
+                        examChoice = true;
+                    } else if (choice == 2) {
                         examPick = ExamTypes.English;
-                        examChoise = "picked";
+                        examChoice = true;
                     } else {
                         System.out.println("Maak een keuze uit de opties");
                     }
                 }
 
 
-                Exam exam = usingStudent.getExamResult().chooseExam(examPick);
+                Exam exam = studentHandler.getUsingStudent().getExamResult().chooseExam(examPick);
 
                 boolean passed = false;
                 ArrayList<String> answers = new ArrayList<String>();
@@ -129,7 +129,8 @@ public class Menu {
                     System.out.println(examQuestions.getQuestion());
 
                     System.out.println("Geef antwoord:");
-                    answers.add(scanner.nextLine());
+                    String answer = scanner.nextLine();
+                    answers.add(answer);
 
                 }
                 passed = exam.checkAnswers(answers);
