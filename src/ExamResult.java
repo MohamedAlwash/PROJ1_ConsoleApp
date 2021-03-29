@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class ExamResult {
 
-
     public ArrayList<Exam> exams = new ArrayList<>();
 
     public ArrayList<Exam> getExams() {
@@ -26,5 +25,4 @@ public class ExamResult {
         }
         return null;
     }
-
 }

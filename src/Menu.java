@@ -55,6 +55,7 @@ public class Menu {
                 System.out.println(studentName + " - " + studentNumber + " is toegevoegd.");
 
                 break;
+
             case 4: //remove student
 
                 Scanner sc = new Scanner(System.in);
@@ -67,6 +68,7 @@ public class Menu {
                 studentHandler.RemoveStudent(sc.nextInt());
 
                 break;
+
             case 5: //Attempt Exam
 
                 System.out.println("Welke student ben je?");
@@ -111,6 +113,7 @@ public class Menu {
                 }
 
                 break;
+
             case 6: //Is student geslaagd voor een test?
                 int index = 0;
                 System.out.println("Welke student, kies een index");
@@ -129,6 +132,7 @@ public class Menu {
 
                 //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
                 break;
+
             case 7:
 
                 /*int x = 0;
@@ -143,13 +147,16 @@ public class Menu {
                 System.out.println("Welke student ben je?");
                 studentHandler.ChooseStudent();
 
-                for (int i = 0; i < studentHandler.getUsingStudent().getExamResult().getExams().size(); i++) {
-                    Exam passedExam = studentHandler.getUsingStudent().getExamResult().getExams().get(i);
-                    if (passedExam.getResult()) {
-                        System.out.println( (i+1) + ". " + passedExam.getExamType().toString());
+                int i = 1;
+
+                for (Exam passedExam: studentHandler.getUsingStudent().getExamResult().getExams()) {
+                    if(passedExam.getResult()){
+                        System.out.println( (i) + ". " + passedExam.getExamType().toString());
+                        i++;
                     }
                 }
                 break;
+
             case 8:
                 break;
             case 9:

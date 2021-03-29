@@ -29,10 +29,7 @@ public class EnglishExam extends Exam {
         englishQuestions.add(new Question("Hoe zeg je 'dromedaris' in het Engels?", "dromedary" ));
 
 
-
-
-
-
         return englishQuestions;
     }
+
 }

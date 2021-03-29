@@ -42,4 +42,5 @@ public abstract class Exam {
     }
 
     public abstract ArrayList<Question> getExamQuestions();
+
 }
