@@ -29,14 +29,6 @@ public class Menu {
                 break;
             case 2: // List of students
 
-                /*StringBuilder sb = new StringBuilder();
-
-                for (Student allStudent : studentHandler.getAllStudents()) {
-                    sb.append(allStudent.getName() + " " + allStudent.getStudentNumber() + "\n");
-                    sb.append("\n");
-
-                }*/
-
                 studentHandler.DisplaysAllStudents();
 
                 break;
@@ -125,7 +117,9 @@ public class Menu {
 
                 ArrayList<Student> student =  this.studentHandler.getAllStudents();
                 System.out.println(student.get(chooseNumber-1).getName());
-                System.out.println(student.get(chooseNumber-1).getExamResult().getExams());
+//                System.out.println(student.get(chooseNumber-1).getExamResult().getExams());
+
+
 //                for(Exam examResultaat : student.get(chooseNumber-1).getExamResult().getExams())
 //                {
 //                    System.out.println(examResultaat.getResult());
@@ -135,15 +129,6 @@ public class Menu {
                 break;
 
             case 7:
-
-                /*int x = 0;
-                for (Student student: studentHandler.getAllStudents()) {
-                x++;
-                System.out.println(x + ". " + student.getName());
-                }
-                int studentChoise = input.nextInt();
-
-                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoise - 1));*/
 
                 System.out.println("Welke student ben je?");
                 studentHandler.ChooseStudent();
