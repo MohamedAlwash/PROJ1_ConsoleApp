@@ -116,24 +116,29 @@ public class Menu {
                 break;
 
             case 6: //Is student geslaagd voor een test?
-                int index = 0;
+                int index = 1;
                 System.out.println("Welke student, kies een index");
 
-                studentHandler.DisplaysAllStudents();
+                studentHandler.ChooseStudent();
 
-                int chooseNumber = Tools.SafeIntegerInput();
+                System.out.println(studentHandler.getUsingStudent().getName());
 
-                ArrayList<Student> student =  this.studentHandler.getAllStudents();
-                System.out.println(student.get(chooseNumber-1).getName());
-//                System.out.println(student.get(chooseNumber-1).getExamResult().getExams());
+                for(Exam examStudent : studentHandler.getUsingStudent().getExamResult().getExams())
+                {
+                    System.out.println(index++ + ". " + examStudent.getExamType());
+                }
 
+                System.out.println("Van welke examen wil je de resultaat hebben");
 
-//                for(Exam examResultaat : student.get(chooseNumber-1).getExamResult().getExams())
-//                {
-//                    System.out.println(examResultaat.getResult());
-//                }
+                int chooseNumber = Tools.SafeIntegerInputWithInBounds(1, studentHandler.getUsingStudent().getExamResult().getExams().size())-1;
 
-                //Eerst selecteren welke examens en vervolgens de resultaat laten zien.
+                if(!studentHandler.getUsingStudent().getExamResult().getExams().get(chooseNumber).getResult())
+                {
+                    System.out.println("Onvoldoende");
+                }else {
+                    System.out.println("Voldoende");
+                }
+
                 break;
 
             case 7:

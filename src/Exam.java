@@ -13,8 +13,6 @@ public abstract class Exam {
         return result;
     }
 
-
-
     public void setResult(Boolean result) {
         this.result = result;
     }
