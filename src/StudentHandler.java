@@ -25,7 +25,6 @@ public class StudentHandler {
     }
 
     public void AddStudent (String studentName, Integer studentNumber){
-
         setUsingStudent(new Student(studentName, studentNumber));
         getAllStudents().add(getUsingStudent());
     }
