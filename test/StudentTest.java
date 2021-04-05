@@ -3,8 +3,6 @@ package test;
 import org.junit.Test;
 import src.*;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class StudentTest {
@@ -14,7 +12,7 @@ public class StudentTest {
     public void testCreatingStudent(){
         StudentHandler studentHandler = new StudentHandler();
 
-        studentHandler.AddStudent("Test", 12345678);
+        studentHandler.addStudent("Test", 12345678);
         Student student = studentHandler.getUsingStudent();
 
         assertEquals("Test", student.getName());
@@ -26,11 +24,11 @@ public class StudentTest {
     public void testStudentList(){
         StudentHandler studentHandler = new StudentHandler();
 
-        studentHandler.AddStudent("Test", 12345678);
+        studentHandler.addStudent("Test", 12345678);
 
         assertEquals(1, studentHandler.getAllStudents().size());
 
-        studentHandler.RemoveStudent(1);
+        studentHandler.removeStudent(1);
 
         assertEquals(0, studentHandler.getAllStudents().size());
     }
@@ -40,9 +38,9 @@ public class StudentTest {
     public void testCheckIfStudentNumberExit(){
         StudentHandler studentHandler = new StudentHandler();
 
-        studentHandler.AddStudent("Test", 12345678);
+        studentHandler.addStudent("Test", 12345678);
 
-        boolean checked = studentHandler.CheckIfStudentNumberExist(12345678);
+        boolean checked = studentHandler.checkIfStudentNumberExist(12345678);
 
         assertFalse(checked);
     }

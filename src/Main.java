@@ -1,7 +1,4 @@
 package src;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Scanner;
 
 class Main
@@ -15,9 +12,9 @@ class Main
         Menu menu = new Menu(studentHandler);
         int exit = 0;
 
-        studentHandler.AddStudent("Ashwin", 12345678);
-        studentHandler.AddStudent("Mohamed", 18046533);
-        studentHandler.AddStudent("Richall", 23457913);
+        studentHandler.addStudent("Ashwin", 12345678);
+        studentHandler.addStudent("Mohamed", 18046533);
+        studentHandler.addStudent("Richall", 23457913);
 
 
         menu.menuInterface();

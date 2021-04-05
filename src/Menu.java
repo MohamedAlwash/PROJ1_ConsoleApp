@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    //public String result = "";
-    //private Student usingStudent;
 
     private final StudentHandler studentHandler;
 
@@ -16,10 +14,6 @@ public class Menu {
     }
 
     public void menuInterface() {
-        Scanner scanner = new Scanner(System.in);
-        //int selectie = menuOpties();
-
-        // switch case voor menu opties
         switch (menuOptions()) {
             case 1: // List of all exams
                 for(ExamTypes exam : ExamTypes.values())
@@ -29,7 +23,7 @@ public class Menu {
                 break;
             case 2: // List of students
 
-                studentHandler.DisplaysAllStudents();
+                studentHandler.displaysAllStudents();
 
                 break;
 
@@ -39,9 +33,9 @@ public class Menu {
                 String studentName = Tools.SafeStringInput();
 
                 System.out.println("Vul je studentnummer in:");
-                Integer studentNumber = studentHandler.SafeCreateStudentNumber();
+                Integer studentNumber = studentHandler.safeCreateStudentNumber();
 
-                studentHandler.AddStudent(studentName, studentNumber);
+                studentHandler.addStudent(studentName, studentNumber);
 
                 System.out.println();
                 System.out.println(studentName + " - " + studentNumber + " is toegevoegd.");
@@ -54,10 +48,10 @@ public class Menu {
 
                 System.out.println("Welke student wilt u verwijderen?");
 
-                studentHandler.DisplaysAllStudents();
+                studentHandler.displaysAllStudents();
 
                 System.out.println("\nMaak een keuze:");
-                studentHandler.RemoveStudent(sc.nextInt());
+                studentHandler.removeStudent(sc.nextInt());
 
                 break;
 
@@ -65,11 +59,7 @@ public class Menu {
 
                 System.out.println("Welke student ben je?");
 
-
-                /*int studentChoice = Tools.SafeIntegerInputWithInBounds(0,studentHandler.getAllStudents().size());
-                studentHandler.setUsingStudent(studentHandler.getAllStudents().get(studentChoice - 1));*/
-
-                studentHandler.ChooseStudent();
+                studentHandler.chooseStudent();
 
                 int exams = 1;
 
@@ -119,7 +109,7 @@ public class Menu {
                 int index = 1;
                 System.out.println("Welke student, kies een index");
 
-                studentHandler.ChooseStudent();
+                studentHandler.chooseStudent();
 
                 System.out.println(studentHandler.getUsingStudent().getName());
 
@@ -141,10 +131,9 @@ public class Menu {
 
                 break;
 
-            case 7:
-
+            case 7: //Welke examens heeft student gehaald?
                 System.out.println("Welke student ben je?");
-                studentHandler.ChooseStudent();
+                studentHandler.chooseStudent();
 
                 int i = 1;
 
@@ -155,9 +144,7 @@ public class Menu {
 
                 break;
 
-            case 8:
-
-
+            case 8: //Welke student heeft de meeste examens gehaald?
                 Student HighestStudent = null;
                 ArrayList<Student> CopyStundents = new ArrayList<>(studentHandler.getAllStudents());
 
@@ -189,10 +176,8 @@ public class Menu {
                 break;
 
         }
-
-        Continue();
+        continueApplication();
     }
-
 
     private int menuOptions() {
         int select = 0;
@@ -223,7 +208,7 @@ public class Menu {
         return select;
     }
 
-    private void Continue(){
+    private void continueApplication(){
 
         System.out.println("\nKeuze menu:");
         System.out.println("1. Terug naar Main menu");
@@ -239,7 +224,5 @@ public class Menu {
                 System.exit(1);
         }
     }
-
-
 }
 

@@ -12,10 +12,6 @@ public class StudentHandler {
         return allStudents;
     }
 
-    public void setAllStudents(ArrayList<Student> allStudents) {
-        allStudents = allStudents;
-    }
-
     public Student getUsingStudent() {
         return usingStudent;
     }
@@ -24,30 +20,30 @@ public class StudentHandler {
         this.usingStudent = usingStudent;
     }
 
-    public void AddStudent (String studentName, Integer studentNumber){
+    public void addStudent(String studentName, Integer studentNumber){
         setUsingStudent(new Student(studentName, studentNumber));
         getAllStudents().add(getUsingStudent());
     }
 
-    public void RemoveStudent(int studentIndex){
+    public void removeStudent(int studentIndex){
         getAllStudents().remove(studentIndex-1);
 
     }
 
-    public void DisplaysAllStudents(){
+    public void displaysAllStudents(){
         for (int i = 0; i < getAllStudents().size(); i++){
             System.out.println((i + 1) + ". " + getAllStudents().get(i).getName() + " - " + getAllStudents().get(i).getStudentNumber());
         }
     }
 
-    public void ChooseStudent(){
+    public void chooseStudent(){
 
-        DisplaysAllStudents();
+        displaysAllStudents();
         setUsingStudent(getAllStudents().get(Tools.SafeIntegerInputWithInBounds(1, getAllStudents().size()) - 1));
 
     }
 
-    public Integer SafeCreateStudentNumber(){
+    public Integer safeCreateStudentNumber(){
 
         Scanner scanner = new Scanner(System.in);
 
@@ -61,7 +57,7 @@ public class StudentHandler {
                 if(input < 0){
                     throw new Exception();
                 }
-                Valid = CheckIfStudentNumberExist(input);
+                Valid = checkIfStudentNumberExist(input);
             }catch (Exception exception){
                 System.out.println("Input is niet geldig, probeer opnieuw");
             }
@@ -71,7 +67,7 @@ public class StudentHandler {
 
     }
 
-    public boolean CheckIfStudentNumberExist(Integer studentNumber){
+    public boolean checkIfStudentNumberExist(Integer studentNumber){
 
         for (Student student: getAllStudents()) {
             if(studentNumber.equals(student.getStudentNumber())){

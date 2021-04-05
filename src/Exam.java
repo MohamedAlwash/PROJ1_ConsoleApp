@@ -7,7 +7,6 @@ public abstract class Exam {
 
     private Boolean result;
     private ExamTypes examType;
-    private Integer correct = 0;
 
     public Boolean getResult() {
         return result;

@@ -16,7 +16,7 @@ public class QuestionTest {
     public void testGetQuestions(){
         StudentHandler studentHandler = new StudentHandler();
 
-        studentHandler.AddStudent("Test", 12345678);
+        studentHandler.addStudent("Test", 12345678);
         Student student = studentHandler.getUsingStudent();
 
         ArrayList<Question> questions = student.getExamResult().chooseExam(ExamTypes.Debug).getExamQuestions();
@@ -32,7 +32,7 @@ public class QuestionTest {
     public void testAchievedExam(){
         StudentHandler studentHandler = new StudentHandler();
 
-        studentHandler.AddStudent("Test", 12345678);
+        studentHandler.addStudent("Test", 12345678);
         Student student = studentHandler.getUsingStudent();
 
         Exam exam = student.getExamResult().chooseExam(ExamTypes.Debug);
