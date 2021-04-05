@@ -9,7 +9,7 @@ public class Menu {
     //public String result = "";
     //private Student usingStudent;
 
-    private StudentHandler studentHandler;
+    private final StudentHandler studentHandler;
 
     public Menu(StudentHandler studentHandler) {
         this.studentHandler = studentHandler;
@@ -103,7 +103,8 @@ public class Menu {
                     answers.add(answer);
 
                 }
-                passed = exam.checkAnswers(answers);
+
+                passed = studentHandler.getUsingStudent().getExamResult().checkAnswers(answers, exam);
 
 
                 if (passed){
@@ -149,15 +150,21 @@ public class Menu {
 
                 int i = 1;
 
-                for (Exam passedExam: studentHandler.getUsingStudent().getExamResult().getExams()) {
-                    if(passedExam.getResult()){
-                        System.out.println( (i) + ". " + passedExam.getExamType().toString());
-                        i++;
-                    }
+                for (Exam passedExam: studentHandler.getUsingStudent().getExamResult().achievedExams) {
+                    System.out.println( (i) + ". " + passedExam.getExamType().toString());
+                    i++;
                 }
+
                 break;
 
             case 8:
+
+
+
+                /*for (Student allstudents: studentHandler.getAllStudents()) {
+
+                }*/
+
                 break;
             case 9:
                 System.exit(1);

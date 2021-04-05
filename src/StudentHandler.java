@@ -58,7 +58,10 @@ public class StudentHandler {
 
         while (!Valid){
             try{
-                input = Tools.SafeIntegerInputWithInBounds(0, 99999999);
+                input = Integer.parseInt(Tools.SafeStringInputWithInBounds(8, 8));
+                if(input < 0){
+                    throw new Exception();
+                }
                 Valid = CheckIfStudentNumberExist(input);
             }catch (Exception exception){
                 System.out.println("Input is niet geldig, probeer opnieuw");

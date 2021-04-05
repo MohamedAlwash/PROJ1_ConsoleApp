@@ -17,7 +17,7 @@ class Main
 
         studentHandler.AddStudent("Ashwin", 12345678);
         studentHandler.AddStudent("Mohamed", 18046533);
-        studentHandler.AddStudent("Richall", 2345791);
+        studentHandler.AddStudent("Richall", 23457913);
 
 
         menu.menuInterface();
