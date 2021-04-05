@@ -160,10 +160,33 @@ public class Menu {
             case 8:
 
 
+                Student HighestStudent = null;
+                ArrayList<Student> CopyStundents = new ArrayList<>(studentHandler.getAllStudents());
 
-                /*for (Student allstudents: studentHandler.getAllStudents()) {
+                int Lenght = CopyStundents.size();
 
-                }*/
+                for (int l = 0; l < Lenght; l++){
+
+                    int amount = -1;
+
+                    for (Student allstudents: CopyStundents) {
+                        int SizeOfAchievedExams = allstudents.getExamResult().getAchievedExams().size();
+                        if(amount < SizeOfAchievedExams){
+                            amount = SizeOfAchievedExams;
+                            HighestStudent = allstudents;
+                        }
+                    }
+
+                    CopyStundents.remove(HighestStudent);
+
+
+                    System.out.println((l + 1) + ". " + HighestStudent.getName() + " Achieved: " + HighestStudent.getExamResult().getAchievedExams().size());
+
+
+                }
+
+
+
 
                 break;
             case 9:

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class ExamResult {
 
+    public ArrayList<Exam> getAchievedExams() {
+        return achievedExams;
+    }
+
     public ArrayList<Exam> achievedExams = new ArrayList<>();
     public ArrayList<Exam> exams = new ArrayList<>();
 

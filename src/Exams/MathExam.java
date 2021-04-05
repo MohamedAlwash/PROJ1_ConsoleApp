@@ -19,7 +19,7 @@ public class MathExam extends Exam {
         //Questions Math
         mathQuestions.add(new Question("1 + 1 =", "2" ));
         mathQuestions.add(new Question("9 + 10 =", "19" ));
-        mathQuestions.add(new Question("50 + 60 =", "90" ));
+        mathQuestions.add(new Question("50 + 60 =", "110" ));
         mathQuestions.add(new Question("7 x 9 =", "63" ));
         mathQuestions.add(new Question("100 / 25 =", "4" ));
         mathQuestions.add(new Question("(90 / 3) * 6 + 5 =", "185" ));
