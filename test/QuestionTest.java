@@ -1,65 +1,111 @@
 package test;
 
 import org.junit.Test;
-import src.Question;
+import src.*;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.*;
 
 public class QuestionTest {
 
-
-    private junit.framework.Assert Assert;
-
+    //Het checkt of de gemaakte student, ook datwerkelijk de gemaakte student is.
     @Test
-    public void testGetAnswer() {
-        Question a = new Question("a", "b");
-        String expectedMessage = "b";
+    public void testCreatingStudent(){
+        StudentHandler studentHandler = new StudentHandler();
 
-        Assert.assertEquals(expectedMessage, a.getAnswer());
+        studentHandler.AddStudent("Test", 12345678);
+        Student student = studentHandler.getUsingStudent();
+
+        assertEquals("Test", student.getName());
+        assertEquals(12345678, (int)student.getStudentNumber());
+    }
+
+    //Het checkt of de questions die zijn gehardcode, ook datwerkelijk is wat wij hebben ingevuldt.
+    @Test
+    public void testGetQuestions(){
+        StudentHandler studentHandler = new StudentHandler();
+
+        studentHandler.AddStudent("Test", 12345678);
+        Student student = studentHandler.getUsingStudent();
+
+        ArrayList<Question> questions = student.getExamResult().chooseExam(ExamTypes.Debug).getExamQuestions();
+
+        assertEquals("Is dit een test?", questions.get(0).getQuestion());
+        assertEquals("ja", questions.get(0).getAnswer());
+    }
+
+
+    //Het checkt of er een student wordt toegevoegt en daarna weer verwijdert wordt.
+    @Test
+    public void testStudentList(){
+        StudentHandler studentHandler = new StudentHandler();
+
+        studentHandler.AddStudent("Test", 12345678);
+
+        assertEquals(1, studentHandler.getAllStudents().size());
+
+        studentHandler.RemoveStudent(1);
+
+        assertEquals(0, studentHandler.getAllStudents().size());
+    }
+
+    //Het checkt of de exams worden toegevoegt aan de AchievedExams lijst, als ze goed zijn gemaakt.
+    //En of de boolean die wordt terug gegeven klopt.
+    @Test
+    public void testAchievedExam(){
+        StudentHandler studentHandler = new StudentHandler();
+
+        studentHandler.AddStudent("Test", 12345678);
+        Student student = studentHandler.getUsingStudent();
+
+        Exam exam = student.getExamResult().chooseExam(ExamTypes.Debug);
+
+        ArrayList<String> answer = new ArrayList<>();
+        answer.add("ja");
+        answer.add("nee");
+
+        boolean gehaald = student.getExamResult().checkAnswers(answer, exam);
+
+        assertTrue(gehaald);
+        assertEquals(1 ,student.getExamResult().getAchievedExams().size());
+
+        Exam exam2 = student.getExamResult().chooseExam(ExamTypes.Debug);
+
+        ArrayList<String> answer2 = new ArrayList<>();
+        answer2.add("nee");
+        answer2.add("ja");
+
+        boolean gehaald2 = student.getExamResult().checkAnswers(answer2, exam2);
+
+        assertFalse(gehaald2);
+        assertEquals(1 ,student.getExamResult().getAchievedExams().size());
+
     }
 
     @Test
-    public void testGetQuestion() {
-        Question a = new Question("a", "b");
-        String expectedMessage = "a";
+    public void testToolsInBounds(){
+        int test1 = 6;
 
-        Assert.assertEquals(expectedMessage, a.getQuestion());
+        boolean IntegerInBounds = Tools.IntegerInBounds(test1,1, 4);
+
+        assertFalse(IntegerInBounds);
+
+        String test2 = "IkBenTim";
+
+        boolean StringInBounds = Tools.StringInBounds(test2, 0, 10);
+
+        assertTrue(StringInBounds);
     }
 
     @Test
-    public void testSetQuestion() {
-        Question a = new Question("a", "b");
-        a.setQuestion("y");
-        String expectedMessage = "y" ;
+    public void testCheckIfStudentNumberExit(){
+        StudentHandler studentHandler = new StudentHandler();
 
-        Assert.assertEquals(expectedMessage, a.getQuestion());
+        studentHandler.AddStudent("Test", 12345678);
+
+        boolean checked = studentHandler.CheckIfStudentNumberExist(12345678);
+
+        assertFalse(checked);
     }
-
-    @Test
-    public void testSetAnswer() {
-        Question a = new Question("a", "b");
-        a.setAnswer("z");
-        String expectedMessage = "z" ;
-
-        Assert.assertEquals(expectedMessage, a.getAnswer());
-    }
-    
-
-
-//    @Test
-//    public void testSetNumberAnswer() {
-//        Question a = new Question("2 + 2", 4);
-//        a.setNumberAnswer(7);
-//        Integer expectedMessage = 7 ;
-//
-//        Assert.assertEquals(expectedMessage, a.getNumberAnswer());
-//
-//    }
-
-    //    @Test
-//    public void testGetNumberAnswer() {
-//        Question a = new Question("6 + 3", 9);
-//        Integer expectedMessage = 9;
-//
-//        Assert.assertEquals(expectedMessage, a.getNumberAnswer());
-//
-//    }
 }

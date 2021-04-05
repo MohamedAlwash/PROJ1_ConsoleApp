@@ -71,15 +71,23 @@ public class Menu {
 
                 studentHandler.ChooseStudent();
 
-                System.out.println("1. Wiskunde examen");
-                System.out.println("2. Engels examen");
+                int exams = 1;
+
+                for(ExamTypes exam : ExamTypes.values())
+                {
+
+                    System.out.println(exams + ". " + exam);
+                    exams++;
+                }
 
                 ExamTypes examPick = ExamTypes.Math;
 
-                int choice = Tools.SafeIntegerInputWithInBounds(1,2);
+                int choice = Tools.SafeIntegerInputWithInBounds(1, ExamTypes.values().length);
                 if (choice == 1) {
                 } else if (choice == 2) {
                     examPick = ExamTypes.English;
+                }else if(choice == 3){
+                    examPick = ExamTypes.Debug;
                 }
 
 
@@ -135,7 +143,7 @@ public class Menu {
 
                 int i = 1;
 
-                for (Exam passedExam: studentHandler.getUsingStudent().getExamResult().achievedExams) {
+                for (Exam passedExam: studentHandler.getUsingStudent().getExamResult().getAchievedExams()) {
                     System.out.println( (i) + ". " + passedExam.getExamType().toString());
                     i++;
                 }
@@ -169,9 +177,6 @@ public class Menu {
 
 
                 }
-
-
-
 
                 break;
             case 9:

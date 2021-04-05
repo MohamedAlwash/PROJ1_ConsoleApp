@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-class Student {
+public class Student {
 
     private ExamResult examResult;
     private String studentName;

@@ -1,5 +1,6 @@
 package src;
 
+import src.Exams.DebugExam;
 import src.Exams.EnglishExam;
 import src.Exams.MathExam;
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ public class ExamResult {
         return achievedExams;
     }
 
-    public ArrayList<Exam> achievedExams = new ArrayList<>();
-    public ArrayList<Exam> exams = new ArrayList<>();
+    private ArrayList<Exam> achievedExams = new ArrayList<>();
+    private ArrayList<Exam> exams = new ArrayList<>();
 
     public ArrayList<Exam> getExams() {
         return exams;
@@ -27,6 +28,10 @@ public class ExamResult {
                 EnglishExam englishExam = new EnglishExam();
                 exams.add(englishExam);
                 return englishExam;
+            case Debug:
+                DebugExam debugExam = new DebugExam();
+                exams.add(debugExam);
+                return debugExam;
         }
         return null;
     }

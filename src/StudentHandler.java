@@ -71,7 +71,7 @@ public class StudentHandler {
 
     }
 
-    private boolean CheckIfStudentNumberExist(Integer studentNumber){
+    public boolean CheckIfStudentNumberExist(Integer studentNumber){
 
         for (Student student: getAllStudents()) {
             if(studentNumber.equals(student.getStudentNumber())){
